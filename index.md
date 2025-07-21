@@ -11,9 +11,4 @@ Welcome to CxWorkshops, Checkmarx's interactive labs for learning about and gett
 These interactive labs are intended to be instructor or proctor-led, however the content is freely available, should you wish to try the labs in your own environment or in your own time.  
 
 {: .note }
-When attending a virtual or in-person workshop, the proctor will provide an temporary API key to provision access to a Checkmarx One tenant.  If you wish to try these labs on your own, you will need your own tenant and/or API key.  To create an API key, see [Generating an API Key](https://checkmarx.com/resource/documents/en/34965-118315-authentication-for-checkmarx-one-cli.html#UUID-a4e31a96-1f36-6293-e95a-97b4b9189060_UUID-1e7abdfa-77eb-2a6c-f12a-c812a1e1dcf7)
-
-To register for a virtual developer workshop, you can use the following links:
-
-- [Americas/EMEA](https://info.checkmarx.com/en/wb/na/virtual-developer-workshop)
-- [APAC](https://info.checkmarx.com/en/wb/apac/virtual-developer-workshop)
+When attending a virtual or in-person workshop, you will need to login to the example tenant once to create a username and password. Once that is complete, these can be used to login via the IDE.  You can also use an api key, see: [Generating an API Key](https://docs.checkmarx.com/en/34965-118315-authentication-for-checkmarx-one-cli.html#UUID-a4e31a96-1f36-6293-e95a-97b4b9189060_section-idm4569983999729633242214461029)

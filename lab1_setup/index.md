@@ -9,12 +9,11 @@ nav_order: 1
 ## Introduction
 In this lab, we will focus on configuring our environment using an IDE and the Checkmarx plugin.  While Checkmarx supports multiple IDEs, for these labs we will be leveraging Microsoft Visual Studio Code, as it is free and commonly used.  Checkmarx has integrated plugins with the following IDEs:
 
-* Eclipse
 * IntelliJ
 * Visual Studio
 * VS Code
 
-To learn more, checkout [Checkmarx Integrations with Popular IDEs](https://checkmarx.com/why-checkmarx/integrations/checkmarx-integrations-with-ides/)
+To learn more, checkout [Checkmarx Integrations with Popular IDEs](https://checkmarx.com/why-checkmarx/integrations/checkmarx-integrations-with-ides/) and [Checkmarx IDE Integration Documentation](https://docs.checkmarx.com/en/34965-68727-checkmarx-one-ide-plugins.html)
 
 {: .warning }
 For these labs, we are using a known vulnerable Java project based heavily on [EasyBuggy](https://github.com/k-tamura/easybuggy) to demonstrate vulnerability detection and remediation capabilities.  Note that if this application is run, this Java application can result in system crashes as a result of memory leaks, deadlock, JVM crashes, etc.  In these labs, we are only using Checkmarx solutions that scan source code, thus there is no reason or need to run this project and __it is not recommended to do so__. If you do wish to run the project, do so at your own risk. It is HIGHLY recommended you do so in a sandbox environment (e.g. within a VM)
