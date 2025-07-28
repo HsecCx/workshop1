@@ -7,17 +7,16 @@ nav_order: 1
 # Lab 1: Environment Setup
 
 ## Introduction
-In this lab, we will focus on configuring our environment using an IDE and the Checkmarx plugin.  While Checkmarx supports multiple IDEs, for these labs we will be leveraging Microsoft Visual Studio Code, as it is free and commonly used.  Checkmarx has integrated plugins with the following IDEs:
+In this lab, we will focus on configuring our environment using an IDE and the Checkmarx plugin.  While Checkmarx supports multiple IDEs, for these labs we will be leveraging __Microsoft Visual Studio Code__, as it is free and commonly used.  Checkmarx has integrated plugins with the following IDEs:
 
-* Eclipse
 * IntelliJ
 * Visual Studio
 * VS Code
 
-To learn more, checkout [Checkmarx Integrations with Popular IDEs](https://checkmarx.com/why-checkmarx/integrations/checkmarx-integrations-with-ides/)
+To learn more, checkout [Checkmarx Integrations with Popular IDEs](https://checkmarx.com/why-checkmarx/integrations/checkmarx-integrations-with-ides/) and [Checkmarx IDE Integration Documentation](https://docs.checkmarx.com/en/34965-68727-checkmarx-one-ide-plugins.html)
 
 {: .warning }
-For these labs, we are using a known vulnerable Java project based heavily on [EasyBuggy](https://github.com/k-tamura/easybuggy) to demonstrate vulnerability detection and remediation capabilities.  Note that if this application is run, this Java application can result in system crashes as a result of memory leaks, deadlock, JVM crashes, etc.  In these labs, we are only using Checkmarx solutions that scan source code, thus there is no reason or need to run this project and __it is not recommended to do so__. If you do wish to run the project, do so at your own risk. It is HIGHLY recommended you do so in a sandbox environment (e.g. within a VM)
+For these labs, we are using a known vulnerable projects to demonstrate vulnerability detection and remediation capabilities.  Note that if this application is run, these applications can result in system crashes as a result of memory leaks, deadlock, JVM crashes, etc.  In these labs, we are only using Checkmarx solutions that scan source code, thus there is no reason or need to run this project and __it is not recommended to do so__. If you do wish to run the project, do so at your own risk. It is HIGHLY recommended you do so in a sandbox environment (e.g. within a VM).
 
 ## Install VS Code
 The first step is to install VS Code, if you don't already have it installed.
@@ -48,22 +47,83 @@ Once VS Code is installed, we need to install the Checkmarx plugin. The Visual S
 
 
 ## Configure the Checkmarx Plugin
-1. In the VS Code console, click on the Checkmarx extension icon and then click on the Open settings button.
-The Checkmarx Settings form opens.
-    ![Configure Checkmarx Plugin](./assets/images/cx_plugin_config.png "Configure Checkmarx Plugin")
 
-2. In the Checkmarx AST plugin section, enter the following details:
+1. In the VS Code console, click on the Checkmarx extension icon and then click on the Open settings button.  
+   The Checkmarx Settings form opens.  
+   ![Configure Checkmarx Plugin](./assets/images/cx_plugin_config.png "Configure Checkmarx Plugin")
+
+
+    <!-- force break between list items -->
+    {% raw %}
+    <script>
+    function updateAuthImage() {
+        const sel = document.getElementById("authSelect").value;
+        document.getElementById("authImage").src =
+        "{{ \"/lab1_setup/assets/images/\" | relative_url }}" + sel + ".png";
+
+        document.getElementById("oauthText").style.display =
+        sel === "plugin_oauth_option" ? "block" : "none";
+        document.getElementById("apiKeyText").style.display =
+        sel === "plugin_api_auth_option" ? "block" : "none";
+    }
+    </script>
+    {% endraw %}
+    <!-- force break between list items -->
+
+
+2. First you will need to authenticate the plugin by clicking the **Authentication** link in box 1.  
+   Once you click that, choose your method below to see the corresponding settings screenshot:
+
+   <div>
+     <strong>Authentication Method:</strong><br>
+     <select id="authSelect" onchange="updateAuthImage()">
+       <option value="plugin_oauth_option">OAuth</option>
+       <option value="plugin_api_auth_option">API Key</option>
+     </select>
+     <br><br>
+
+     <img
+       id="authImage"
+       src="{{ "/lab1_setup/assets/images/plugin_oauth_option.png" | relative_url }}"
+       alt="Auth Method"
+       width="600"
+     />
+
+     <!-- Paragraphs shown conditionally -->
+     <div id="oauthText">
+       <p>
+         The base URL for this lab will be: <code>https://us.ast.checkmarx.net</code>.  
+         The Tenant Name will be delivered in the lab.
+       </p>
+     </div>
+
+     <div id="apiKeyText" style="display: none;">
+       <p>
+         To use the API Key option, the instructions can be found at  
+         <a href="https://docs.checkmarx.com/en/34965-188712-creating-api-keys.html" target="_blank">
+           Generating a Checkmarx API Key
+         </a>.
+       </p>
+     </div>
+   </div>
+
+    
+
+3. In the Checkmarx AST plugin section, enter the following details:
 
 
     |         Item                          |          Value                |
     |:----------------------                |:-----------------------       |
-    | Checkmarx KICS: Additional Parameters | \<leave blank\>                 |
-    | Checkmarx AST: Additional Parameters  | \<leave blank\>                 |
-    | Checkmarx AST: Api Key       | \<provided by proctor\>                |
+    | Checkmarx One: Additional Params | \<leave blank\>                 |
+    | Checkmarx KICS: Activate KICS Real-time Scanning | \<leave blank\>                 |
+    | Checkmarx KICS: Additional Parameters | \<leave blank\> 
+    | Checkmarx AI Secure Coding Assistant (ASCA): Activate ASCA | \<Enable\>                 |
+    | Checkmarx Security Champion: Model  | __Optional:__ Choose a supported model                 |
+    | Checkmarx Security Champion: Key    | __Optional:__ Utilize a GPT API-KEY from your organization               |
 
-3. Once entered, the Checkmarx plugin will authenticate to the Checkmarx One tenant
+4. Once entered, the Checkmarx plugin will authenticate to the Checkmarx One tenant
 
-4. Close the Plugin Settings Screen
+5. Close the Plugin Settings Screen
 
 ## Connect to a project
 
