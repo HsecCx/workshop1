@@ -48,10 +48,10 @@ Sure, speed is important, but you can think of speed-focused SAST scans as this 
 
     ![SAST Filter](./assets/images/sast_filter.png "SAST Filter")
 
-3. Expand the __sast > HIGH__ menu to review the SAST scan results
+3. Expand the __sast > Critical__ menu to review the SAST scan results
 4. Select the __SQL Injection (/SQLInjectionController.java:30)__ result
 
-    ![SAST High](./assets/images/sast_high.png "SAST High")
+    ![SAST High](./assets/images/sast_critical.png "SAST Critical")
 
 5. A pane will open with VS Code to the right, which provides a detailed description of the identified vulnerability along with the attack vector.
 
@@ -61,11 +61,14 @@ Sure, speed is important, but you can think of speed-focused SAST scans as this 
 
     ![SQL Injection Best Fix Location](./assets/images/sqli_bfl.png "SQL Injection Best Fix Location")
 
-7. Reviewing the code, we can see within the result that we're taking direct input of a name and just trimming it and checking if it's blank, otherwise we pass on the input to be later executed as part of a SQL query, which could result in a SQL injection attack. Click on __Learn More__ in the far right pane to see a description of the risk in greater detail:
+7. Reviewing the code, we can see within the result that we're taking direct input of a name and just trimming it and checking if it's blank, otherwise we pass on the input to be later executed as part of a SQL query, which could result in a SQL injection attack. Click on __Description__ in the far right pane to see a description of the risk in greater detail:
+
+    {: .note } 
+    Note that right below description there is the option to go to __Codebashing__. The CheckmarxOne just in time training platform. 
 
     ![SQL Injection Learn More](./assets/images/sqli_learnmore.png "SQL Injection Learn More")
 
-8. Click on Code Samples to see an example of how to implement a sanitizer within the code to mitigate the SQL Injection vulnerability
+8. Click on __Remediation Excamples__ to see an example of how to implement a sanitizer within the code to mitigate the SQL Injection vulnerability
 
     ![SQL Injection Code Sample](./assets/images/sqli_code_sample.png "SQL Injection Code Sample")
 
@@ -75,7 +78,7 @@ While Checkmarx SAST can identify vulnerabilities in source code by validating t
 
 1. Select any one of the __Reflected XSS All Clients__ results.
 
-2. In the right pane, change the second drop down from __To Verify__ to __Not Exploitable__ and enter a comment, such as
+2. In the right pane, change the second drop down from __To Verify__ to __Proposed Not Exploitable__ and enter a comment, such as
 
         We have a validator in our code to ensure that this variable will only include known inputs.
 
@@ -85,7 +88,7 @@ While Checkmarx SAST can identify vulnerabilities in source code by validating t
 
 4. The result will now disappear from the SAST High results.  If we want to review the result again, we can select the filter icon, and de-select all options other than __"Not Exploitable"__
     
-    ![Not Exploitable](./assets/images/not_exploitable.png "Not Exploitable")
+    ![Not Exploitable](./assets/images/proposed_not_exploitable.png "Not Exploitable")
 
 
 

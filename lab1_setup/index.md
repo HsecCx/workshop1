@@ -48,68 +48,79 @@ Once VS Code is installed, we need to install the Checkmarx plugin. The Visual S
 
 ## Configure the Checkmarx Plugin
 
-1. In the VS Code console, click on the Checkmarx extension icon and then click on the Open settings button.  
+1. In the VS Code console, click on the Checkmarx extension icon and then click on the Open settings button.  
    The Checkmarx Settings form opens.  
    ![Configure Checkmarx Plugin](./assets/images/cx_plugin_config.png "Configure Checkmarx Plugin")
 
+2. First you will need to authenticate the plugin by clicking the **Authentication** link in box 1.  
+   Once you click that, choose your method below to see the corresponding settings:
 
-    <!-- force break between list items -->
-    {% raw %}
-    <script>
-    function updateAuthImage() {
-        const sel = document.getElementById("authSelect").value;
-        document.getElementById("authImage").src =
-        "{{ \"/lab1_setup/assets/images/\" | relative_url }}" + sel + ".png";
-
-        document.getElementById("oauthText").style.display =
-        sel === "plugin_oauth_option" ? "block" : "none";
-        document.getElementById("apiKeyText").style.display =
-        sel === "plugin_api_auth_option" ? "block" : "none";
-    }
-    </script>
-    {% endraw %}
-    <!-- force break between list items -->
+   {: .note }
+   The preference for this workshop would be to use the Oauth authentication method. 
 
 
-2. First you will need to authenticate the plugin by clicking the **Authentication** link in box 1.  
-   Once you click that, choose your method below to see the corresponding settings screenshot:
+   <style>
+   .auth-tabs {
+     margin: 20px 0;
+   }
+   .auth-tabs input[type="radio"] {
+     display: none;
+   }
+   .auth-tabs label {
+     display: inline-block;
+     padding: 10px 20px;
+     background: #f0f0f0;
+     border: 1px solid #ddd;
+     cursor: pointer;
+     margin-right: 5px;
+   }
+   .auth-tabs label:hover {
+     background: #e0e0e0;
+   }
+   .auth-tabs input[type="radio"]:checked + label {
+     background: #007acc;
+     color: white;
+   }
+   .auth-content {
+     display: none;
+     padding: 20px;
+     border: 1px solid #ddd;
+     margin-top: 10px;
+     clear: both;
+   }
+   .auth-tabs #oauth-tab:checked ~ .oauth-content,
+   .auth-tabs #apikey-tab:checked ~ .apikey-content {
+     display: block;
+   }
+   </style>
 
-   <div>
-     <strong>Authentication Method:</strong><br>
-     <select id="authSelect" onchange="updateAuthImage()">
-       <option value="plugin_oauth_option">OAuth</option>
-       <option value="plugin_api_auth_option">API Key</option>
-     </select>
-     <br><br>
-
-     <img
-       id="authImage"
-       src="{{ "/lab1_setup/assets/images/plugin_oauth_option.png" | relative_url }}"
-       alt="Auth Method"
-       width="600"
-     />
-
-     <!-- Paragraphs shown conditionally -->
-     <div id="oauthText">
+   <div class="auth-tabs">
+     <input type="radio" id="oauth-tab" name="auth-method" checked>
+     <label for="oauth-tab">OAuth Authentication</label>
+     
+     <input type="radio" id="apikey-tab" name="auth-method">
+     <label for="apikey-tab">API Key Authentication</label>
+     
+     <div class="auth-content oauth-content">
+       <img src="./assets/images/plugin_oauth_option.png" alt="OAuth Authentication" width="600">
        <p>
-         The base URL for this lab will be: <code>https://us.ast.checkmarx.net</code>.  
+         The base URL for this lab will be: <code>https://us.ast.checkmarx.net</code>.<br>
          The Tenant Name will be delivered in the lab.
        </p>
      </div>
 
-     <div id="apiKeyText" style="display: none;">
+     <div class="auth-content apikey-content">
+       <img src="./assets/images/plugin_api_auth_option.png" alt="API Key Authentication" width="600">
        <p>
-         To use the API Key option, the instructions can be found at  
-         <a href="https://docs.checkmarx.com/en/34965-188712-creating-api-keys.html" target="_blank">
-           Generating a Checkmarx API Key
-         </a>.
+         To use the API Key option, the instructions can be found at 
+         <a href="https://docs.checkmarx.com/en/34965-188712-creating-api-keys.html" target="_blank">Generating a Checkmarx API Key</a>.
        </p>
      </div>
    </div>
 
-    
+  
 
-3. In the Checkmarx AST plugin section, enter the following details:
+3. Now that you have authenticated, in the Checkmarx AST plugin section, enter the following details:
 
 
     |         Item                          |          Value                |
@@ -121,7 +132,10 @@ Once VS Code is installed, we need to install the Checkmarx plugin. The Visual S
     | Checkmarx Security Champion: Model  | __Optional:__ Choose a supported model                 |
     | Checkmarx Security Champion: Key    | __Optional:__ Utilize a GPT API-KEY from your organization               |
 
-4. Once entered, the Checkmarx plugin will authenticate to the Checkmarx One tenant
+    {: .note }
+    The AI Features may be disabled for your specific workshop due to organizational policy. 
+
+4. Once entered, you have configured the plugin
 
 5. Close the Plugin Settings Screen
 
@@ -132,7 +146,7 @@ Once VS Code is installed, we need to install the Checkmarx plugin. The Visual S
     ![Select Project](./assets/images/cx_select_project.png "Select the Project")
 
     {: .note }
-    > Since Checkmarx plugin v2.0.11 release, only the AST/One API Key is required to connect the plugin to a Checkmarx One tenant.  If you see a 404 error within VSCode when attempting to connect to a project, it may be because environment variables are overriding the Uri/tenant names from the API key (cx_base_auth_uri, cx_base_uri, cx_tenant).  These variables are set if you've ever connected to Checkmarx One via the CLI. This can be fixed by deleting the checkmarxcli.yaml file if it exists on your machine.
+    > Since Checkmarx plugin v2.34.0 release, only the AST/One API Key or Ouath is required to connect the plugin to a Checkmarx One tenant.  If you see a 404 error within VSCode when attempting to connect to a project while using the API Key option, it may be because environment variables are overriding the Uri/tenant names from the API key (cx_base_auth_uri, cx_base_uri, cx_tenant).  These variables are set if you've ever connected to Checkmarx One via the CLI. This can be fixed by deleting the checkmarxcli.yaml file if it exists on your machine.
     >
     > For Mac OSX and Linux, this file can be found at ~/.checkmarx/checkmarxcli.yaml
     >
@@ -145,6 +159,9 @@ Once VS Code is installed, we need to install the Checkmarx plugin. The Visual S
 3. The Checkmarx Plugin is now configured and you should see scan results appear in the left pane
 
     ![Configuration Finished](./assets/images/cx_scan_results.png "Configuration Finished")
+
+    {: .note }
+    Note that right below description there is the option to go to __Codebashing__. The CheckmarxOne just in time training platform.
 
 
 ## Clone the project to your local machine
@@ -197,3 +214,4 @@ Prior to installing Docker Desktop on your local machine, ensure you adhere to [
 - The Checkmarx One VS Code plugin can be connected to a Checkmarx One instance by configuring one field (the API Key)
 - Checkmarx Scan results can be reviewed all within the IDE
 - Docker is required for IaC/KICS autoremediation within VS Code
+
