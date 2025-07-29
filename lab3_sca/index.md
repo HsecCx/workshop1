@@ -23,24 +23,26 @@ Checkmarx SCA supports all major ecosystems and package managers.  A comprehensi
 
 Within the Checkmarx VS Code plugin, ensure you are connected to the project, branch, and scan result as noted in the __Connect to a project__ section in [Lab 1](../lab1_setup/).
 
-1. Navigate to the Checkmarx Plugin in the left menu of VS Code, expand the sca results, and HIGH results
+1. Navigate to the Checkmarx Plugin in the left menu of VS Code, expand the sca results, and Critical results
 
     {: .note }
-    SCS Malicious Packages will always be returned in SCA HIGH results. We look at malicious packages in a different lab focused on __Supply Chain Security (SCS)__
+    Malicious Packages will always be returned in SCA Critical results. We look at malicious packages in a different lab focused on __Supply Chain Security (SCS)__
 
-    ![SCA High Results](./assets/images/sca_high_results.png "SCA High Results")
+    ![SCA High Results](./assets/images/sca_critical_results.png "SCA Critical Results")
 
-2. Expand the __Maven-mysql:mysql-connector-java-5.1.26__ result
+2. Expand the __Maven-org.apache.tomcat:tomcat-coyote-9.0.22__ result
 
-3. Choose __CVE-2018-3258__ and review the description within the pane opened within VS Code.
+3. Choose __CVE-2020-1938__ and review the description within the pane opened within VS Code.
 
-        Vulnerability in the MySQL Connectors component of Oracle MySQL (subcomponent: Connector/J). Supported versions that are affected are 8.0.12 and prior. Easily exploitable vulnerability allows low privileged attacker with network access via multiple protocols to compromise MySQL Connectors. Successful attacks of this vulnerability can result in takeover of MySQL Connectors. CVSS 3.0 Base Score 8.8 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+    ```
+    When using the Apache JServ Protocol (AJP), care must be taken when trusting incoming connections to Apache Tomcat. Tomcat treats AJP connections as having higher trust than, for example, a similar HTTP connection. If such connections are available to an attacker, they can be exploited in ways that may be surprising. In Apache Tomcat 9.0.0.M1 to 9.0.0.30, 8.5.0 to 8.5.50 and 7.0.0 to 7.0.99, Tomcat shipped with an AJP Connector enabled by default that listened on all configured IP addresses. It was expected (and recommended in the security guide) that this Connector would be disabled if not required. This vulnerability report identified a mechanism that allowed: - returning arbitrary files from anywhere in the web application - processing any file in the web application as a JSP Further, if the web application allowed file upload and stored those files within the web application (or the attacker was able to control the content of the web application by some other means) then this, along with the ability to process a file as a JSP, made remote code execution possible. It is important to note that mitigation is only required if an AJP port is accessible to untrusted users. Users wishing to take a defence-in-depth approach and block the vector that permits returning arbitrary files and execution as JSP may upgrade to Apache Tomcat 9.0.31, 8.5.51 or 7.0.100 or later. A number of changes were made to the default AJP Connector configuration in 9.0.31 to harden the default configuration. It is likely that users upgrading to 9.0.31, 8.5.51 or 7.0.100 or later will need to make small changes to their configurations.  
+    ```
 
-4. We can see the recommended remediation is to __Upgrade To Version 8.0.28__. Additionally there is a link to the vulnerable package path, which is found within deploy/pom.xml.  Click on __deploy/pom.xml__.
+4. We can see the recommended remediation is to __Upgrade To Version 9.0.107__. Additionally there is a link to the vulnerable package path, which is found within deploy/pom.xml.  Click on __deploy/pom.xml__.
 
-    ![SCA MySQL Result](./assets/images/sca_mysql_result.png "SCA MySQL Result")
+    ![SCA Tomcat Result](./assets/images/sca_tomcat_result.png "SCA Tomcat Result")
 
-5.  Within the __deploy/pom.xml__ file, we can update the MySQL version from __5.1.26__ to version __8.0.28__.
+5.  Within the __deploy/pom.xml__ file, we can update the Tomcat version from __9.0.22__ to version __9.0.107__.
 
     {: .note }
     While Checkmarx SCA will often have recommendations to upgrade package versions to address found vulnerabilities, we understand it's not always as simple as just changing a version.  We recommend when upgrading package versions, you do so one at a time in a test or staging environment and performing a regression test to ensure no functionality is broken or lost within your application.  In the event that application functionality is affected, we recommend you coordinate with your internal Security organization to define a remediation plan or implement other mitigation steps to minimize the impact of the vulnerability
@@ -51,25 +53,18 @@ Within the Checkmarx VS Code plugin, ensure you are connected to the project, br
 
     ![DevHub](./assets/images/devhub.png "DevHub")
 
-2. You can see this same result available within the [Vulnerabilities Database](https://devhub.checkmarx.com/cve-details/CVE-2018-3258/).
+2. You can see this same result available within the [Vulnerabilities Database](https://devhub.checkmarx.com/cve-details/CVE-2020-1938/).
 
 3. In addition to DevHub, Checkmarx also can provide email notifications of when new vulnerabilities arise related to previously discovered packages within your projects
 
     ![SCA Email](./assets/images/sca_email.png "SCA Email")
 
-## Integrated SCA Scan Findings in the IDE
-Checkmarx has partnered with JetBrains to offer our SCA scan findings free for JetBrains IntelliJ IDEA Ultimate users.  All you have to do is click on our bundled plug-in within your IntelliJ IDEA Ultimate workspace, and you can start scanning for open source threats right away. To learn more, checkout the [Checkmarx and Jetbrains Bundled Plugin](https://checkmarx.com/why-checkmarx/checkmarx-and-jetbrains/)
-    ![JetBrains IntelliJ IDEA Ultimate Package Checker Plugin](./assets/images/JetBrains_plugin.png "JetBrains IntelliJ IDEA Ultimate Plugin")
-
-Additionally, we have recently introduced similar functionality within within the VS Code plugin.  No subscription or API key is required, you can simply hit the play button in the lower-left quadrant to perform a scan of project 3rd party package manifests.
-    ![VS Code Checkmarx One SCA Autoscan](./assets/images/vscode_sca_autoscan.png "VS Code Checkmarx SCA AutoScan")
-    
-
-
 ## Key Takeaways
 
-
+- Checkmarx SCA identifies vulnerabilities in 3rd party dependencies and open source packages across all major ecosystems
+- Critical vulnerabilities like CVE-2020-1938 can pose significant security risks including remote code execution
+- Package remediation often involves upgrading to newer versions, but requires careful testing to avoid breaking changes
 - Checkmarx is constantly monitoring, testing, and updating its database for 3rd party packages for tracking vulnerabilities
 - Checkmarx SCA can automatically email you or your security champion when new vulnerabilities are detected within previously identified packages
 - Vulnerability data is available in a number of areas, including the Checkmarx One VS Code plugin, [Checkmarx DevHub Vulnerabilities Database](https://devhub.checkmarx.com/advisories/), or within the Checkmarx One web interface itself
-- Checkmarx provides SCA scan findings for free within JetBrains IntelliJ IDEA as well as VS Code.
+- DevHub provides comprehensive vulnerability details, attack vectors, and remediation guidance for better understanding
