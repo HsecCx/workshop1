@@ -72,6 +72,86 @@ Sure, speed is important, but you can think of speed-focused SAST scans as this 
 
     ![SQL Injection Code Sample](./assets/images/sqli_code_sample.png "SQL Injection Code Sample")
 
+## AI Secure Coding Assistant (ASCA)
+
+The AI Secure Coding Assistant (ASCA) is an advanced real-time scanning feature integrated into the Checkmarx VS Code extension. Unlike traditional SAST scans that occur after code is written, ASCA provides __instant security feedback as you type__, helping developers identify and fix security issues during development.
+
+### How ASCA Works
+
+ASCA runs as a lightweight background process on your local machine, automatically scanning files whenever you edit them. After you pause typing for 2 seconds, ASCA performs a new scan and updates the results in real-time. The scan results appear within milliseconds, providing instant feedback without disrupting your development workflow.
+
+### Key Features
+
+- __Real-time Analysis__: Scans code as you type with sub-second response times
+- __Local Processing__: Runs entirely on your local machine for privacy and speed  
+- __Visual Indicators__: Color-coded underlines in your code indicate vulnerability severity
+- __Problems Integration__: Results appear in VS Code's Problems panel
+- __GitHub Copilot Integration__: Generate AI-powered remediation suggestions
+- __Multiple Language Support__: Currently supports Java, JavaScript (Node.js), C#, and Python
+
+### Viewing ASCA Results
+
+1. __Open a vulnerable file__ by selecting the `src\main\java\org\t246osslab\easybuggy4sb\controller\CxController.java` file
+
+2. __Generate a vulnerable function__ As an example to show how the scan takes place locally, as you modify the file, copy and paste the following function to the end of the selected file
+
+    ```java
+    @PostMapping("upload")
+    public String uploadFile(@RequestParam("file") MultipartFile file) {
+        try {
+            // Save the uploaded file to the server's filesystem
+            File uploadedFile = new File("/tmp/" + file.getOriginalFilename());
+            try (FileOutputStream fos = new FileOutputStream(uploadedFile)) {
+                fos.write(file.getBytes());
+            }
+            return "File uploaded successfully: " + uploadedFile.getAbsolutePath();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Failed to upload file.";
+        }
+    }
+
+    ```
+
+3. __Look for underlined code__: ASCA will automatically scan the file and show color-coded squiggly lines under problematic code. If you hover on the insecure code, ASCA will show you the reason for the finding. It will also denote at the end of the description that it was an ASCA finding. 
+
+    ![ASCA Finding](./assets/images/asca_insecure_section_handling.png)
+
+4. __Check the Problems panel__: Navigate to __View__ > __Problems__ to see a detailed list of ASCA findings
+
+    ![ASCA Findings in Problems Panel](./assets/images/asca_problems_terminal.png)
+
+### AI-Powered Remediation with GitHub Copilot
+
+If you have GitHub Copilot installed, ASCA can generate customized code fixes:
+
+1. __Select the ASCA Result in the Problems Terminal__ and click the __lightbulb__ icon (Show Code Actions). You can select "Fix using Copilot" to generate a code fix or you can select the "Explain using Copilot" to generate a detailed explanation of the vulnerability with an example fix. 
+
+    ![ASCA Copilot Fix](./assets/images/asca_problems_fix.png)
+
+
+2. __Select "Fix using Copilot"__ from the context menu (this can be found by hovering over the vulnerability as seen in number 3 in the previous section).  Here you can generate explanations and fixes inline without having to move to the problems pane. 
+
+3. __Review the AI-generated fix__ - Copilot will provide a customized remediation based on ASCA's security knowledge
+4. __Click "Accept"__ if satisfied with the suggestion
+5. __Automatic rescan__: ASCA will immediately rescan and remove the issue if properly resolved
+
+{: .note }
+__Try It Now__: Generate a fix or explanation from the vulnerability we added. 
+
+### ASCA vs Traditional SAST
+
+| Feature | ASCA | Traditional SAST |
+|---------|------|------------------|
+| __Timing__ | Real-time (as you type) | On-demand or scheduled |
+| __Scope__ | Single file | Entire codebase |
+| __Speed__ | Milliseconds | Minutes to hours |
+| __Location__ | Local machine | Cloud/server |
+| __Integration__ | Problems panel, underlines | Separate results viewer |
+| __Remediation__ | AI-powered with Copilot | Manual implementation |
+
+{: .warning }
+__Important Considerations__: ASCA results are __local only__ and do not sync with the Checkmarx One platform. ASCA analyzes __single files only__, not cross-file data flows. While ASCA provides valuable real-time feedback, it should __supplement__, not replace, comprehensive Checkmarx One scans.
 
 ## Triaging Results
 While Checkmarx SAST can identify vulnerabilities in source code by validating that sanitizers are in place since it has visibility into data flow, it is relatively limited in its ability to detect control flow based validation.  Perhaps we have validation within our application that we know will ensure our code is not subject to a vulnerability. We have the ability to triage results from within the IDE where we can mark them as "not exploitable" so they do not get returned upon future scans
