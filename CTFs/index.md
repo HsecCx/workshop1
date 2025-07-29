@@ -31,18 +31,17 @@ For these CTF challenges, you will use the **TotallySecure** application - a com
 
 The three CTF challenges are designed with progressive difficulty and scope:
 
-| Challenge | Difficulty | Duration | TotallySecure Focus | Skills Developed |
+| Challenge | Duration | TotallySecure Focus | Skills Developed |
 |-----------|------------|----------|-------------------|------------------|
-| **Supply Chain Detective** | ⭐⭐⭐ | 45-60 min | SCA & Dependency Security | Package security, dependency analysis, supply chain awareness |
-| **Vulnerability Hunter** | ⭐⭐⭐⭐ | 30-45 min | SAST & AI-Enhanced Development | Code vulnerability identification, AI-assisted remediation, plugin mastery |
-| **Security Development Lead** | ⭐⭐⭐⭐⭐ | 45-60 min | ASPM & Development Leadership | Multi-domain security, risk prioritization, team leadership |
+| **Supply Chain Detective**  | 15-30 min | SCA & Dependency Security | Package security, dependency analysis, supply chain awareness |
+| **Vulnerability Hunter**  | 15-30 min | SAST & AI-Enhanced Development | Code vulnerability identification, AI-assisted remediation, plugin mastery |
+| **Security Development Lead**  | 15-30 min | ASPM & Development Leadership | Multi-domain security, risk prioritization, team leadership |
 
 ## Prerequisites
 
 Before attempting these CTF challenges, developers should have:
 
 - **Completed Labs 1-5**: Foundation knowledge of Checkmarx One platform and tools
-- **Development Experience**: Active software development experience in Java or Python
 - **Access Verification**: Confirmed access to TotallySecure project and its associated application in ASPM
 - **Tool Familiarity**: Comfort with VS Code, Checkmarx plugin, and development workflows
 
@@ -75,7 +74,6 @@ Each CTF follows a structured format designed for developer skill building:
 - **Scenario Setup**: Real-world development context and challenges
 - **Hands-on Phases**: Time-boxed coding and analysis exercises
 - **Flag Capture**: Specific deliverables demonstrating secure development skills
-- **Success Criteria**: Three levels of achievement (Basic, Intermediate, Advanced)
 - **Development Integration**: How to apply learnings in daily development work
 
 ## Setup Instructions
@@ -107,7 +105,7 @@ The form includes all three progressive challenge sections:
 - **Security Development Lead** (ASPM integration, multi-domain leadership)
 
 ### **Total Experience**
-- **Duration**: 2-3 hours for all challenges
+- **Duration**: 1-1.5 hours for all challenges
 - **Skills Developed**: Complete security-first development mastery
 - **Progression**: Builds from individual skills to team leadership
 
