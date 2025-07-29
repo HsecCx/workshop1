@@ -51,7 +51,7 @@ Sure, speed is important, but you can think of speed-focused SAST scans as this 
 3. Expand the __sast > Critical__ menu to review the SAST scan results
 4. Select the __SQL Injection (/SQLInjectionController.java:30)__ result
 
-    ![SAST High](./assets/images/sast_critical.png "SAST Critical")
+    ![SAST Critical](./assets/images/sast_critical.png "SAST Critical")
 
 5. A pane will open with VS Code to the right, which provides a detailed description of the identified vulnerability along with the attack vector.
 
@@ -68,7 +68,7 @@ Sure, speed is important, but you can think of speed-focused SAST scans as this 
 
     ![SQL Injection Learn More](./assets/images/sqli_learnmore.png "SQL Injection Learn More")
 
-8. Click on __Remediation Excamples__ to see an example of how to implement a sanitizer within the code to mitigate the SQL Injection vulnerability
+8. Click on __Remediation Examples__ to see an example of how to implement a sanitizer within the code to mitigate the SQL Injection vulnerability
 
     ![SQL Injection Code Sample](./assets/images/sqli_code_sample.png "SQL Injection Code Sample")
 
@@ -177,5 +177,7 @@ While Checkmarx SAST can identify vulnerabilities in source code by validating t
 - Checkmarx One integrates with all major SCMs and can automatically trigger scans on push and pull request events
 - SAST results are viewable directly within the IDE, so you don't have to navigate to a different tool or site to review results
 - We can see the "Best Fix Location" along with a detailed analysis and recommendations within the IDE to implement controls within our code
+- ASCA provides real-time security feedback as you type, complementing traditional SAST scans with instant local analysis
+- AI-powered remediation through GitHub Copilot integration enables automatic fix generation for security vulnerabilities
 - We have the ability to triage results from within the IDE where we can mark them as "not exploitable" so they do not get returned upon future scans
 
