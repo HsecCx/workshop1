@@ -27,8 +27,6 @@ If you already have VS Code installed, you can skip this section. When we are do
 1. Navigate to [https://code.visualstudio.com/download](https://code.visualstudio.com/download) to download the Visual Studio Code installer for your operating system.
 2. Install VS Code on your machine
 
-![Install VS Code](./assets/images/vscode_ubuntu_install.png "VS Code Install")
-
 
 ## Install the Checkmarx Plugin
 Once VS Code is installed, we need to install the Checkmarx plugin. The Visual Studio Code Extension is available on the [Visual Studio Code marketplace](https://marketplace.visualstudio.com/items?itemName=checkmarx.ast-results). You can initiate the installation directly from the Visual Studio Code console.
@@ -39,7 +37,7 @@ Once VS Code is installed, we need to install the Checkmarx plugin. The Visual S
     ![Install Checkmarx Plugin](./assets/images/vscode_extensions.png "Checkmarx VX Code Plugin")
 
     {: .note }
-    Ensure you select the Plugin entitled "Checkmarx," not Checkmarx SAST x.x
+    Ensure you select the Plugin entitled "Checkmarx One" not Checkmarx SAST x.x
 
 4. The Checkmarx extension is installed and the Checkmarx icon appears in the left-side navigation panel
 
@@ -141,7 +139,7 @@ Once VS Code is installed, we need to install the Checkmarx plugin. The Visual S
 
 ## Connect to a project
 
-1. Mouse-over the __Project:__ field in the left pane, click the pencil icon, then select the project name __cxworkshops/totallysecureapp__ that appears in the middle search bar
+1. Mouse-over the __Project:__ field in the left pane, click the pencil icon, then select the project name __TotallySecure__ that appears in the middle search bar
 
     ![Select Project](./assets/images/cx_select_project.png "Select the Project")
 
@@ -158,55 +156,27 @@ Once VS Code is installed, we need to install the Checkmarx plugin. The Visual S
 
 3. The Checkmarx Plugin is now configured and you should see scan results appear in the left pane
 
-    ![Configuration Finished](./assets/images/cx_scan_results.png "Configuration Finished")
-
-    {: .note }
-    Note that right below description there is the option to go to __Codebashing__. The CheckmarxOne just in time training platform.
+    ![Configuration Finished](./assets/images/cx_scan_results.png)
 
 
 ## Clone the project to your local machine
 
-1. Open a terminal or command prompt and navigate to a directory or folder you'll be able to easily find (e.g. ~/ on Mac OSX or Linux or %UserProfile%/)
+1. Open a terminal or command prompt and navigate to a directory or folder you'll be able to easily find (e.g. ~/ on Mac OSX and Linux or %UserProfile%/ on Windows)
 
-    ~[Terminal](./assets/images/terminal_dir.png "Terminal")
 
 2. Clone our example scanned project to your local machine.
 
-        git clone https://github.com/cxworkshops/totallysecureapp.git
+        git clone https://github.com/HsecCx/workshop-TotallySecure.git
 
     {: .note }
     You will need __git__ installed on your local machine if it is not already installed. You can use [this guide ](https://github.com/git-guides/install-git) to see the steps for your operating system
 
-3. Within VS Code, select __File__ > __Open Folder__, and select the directory __totallysecureapp__.
+3. Within VS Code, select __File__ > __Open Folder__, and select the directory __workshop-TotallySecure__.
 
 4.  You may be prompted by VS Code asking if you trust the developers. We will not be executing any of this projects code and will just be reviewing the source, so you can safely accept. Once you complete the labs, you can safely delete the project.
 
     ![VS Code Trust Project](./assets/images/vscode_trust.png "VS Code Trust Project")'
 
-
-## (Optional) Install Docker on your local machine
-
-{: .note }
-Docker is required to be installed on your local machine if you wish to use the Checkmarx Infrastructure-as-code (IaC)/KICS autoremediation feature. 
-
-### Windows / Mac Users
-
-The easiest way to get Docker installed on a Windows or Mac machine is to do so with [Docker Desktop](https://www.docker.com/products/docker-desktop/).
-
-{: .note }
-Prior to installing Docker Desktop on your local machine, ensure you adhere to [Docker's Subscription and Licensing terms](https://www.docker.com/pricing/faq/).
-
-1. In this example, we will be installing docker on our Ubuntu Linux machine.  Use the following command to install docker:
-
-        sudo apt install docker.io
-
-    ![ubuntu docker](./assets/images/docker_install.png "Docker Install")
-
-2. Review the install requirements and dependent packages and type 'y' when ready
-
-3. If you are running on Linux, you will need to ensure that your user can manage docker as non-root.  The easiest way to do this is to add your user to the docker group:
-
-        sudo gpasswd -a $USER docker
 
 ## Key Takeaways
 - Checkmarx has IDE plugins for all major IDEs

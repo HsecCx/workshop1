@@ -10,7 +10,7 @@ In this lab, we will explore some examples of Software Supply Chain (SCS) findin
 {: .important-title }
 > Prerequisites
 >
-> We will be using our __totallysecureapp__ project, which is available at https://github.com/cxworkshops/totallysecureapp. If you have not already done so, clone the project to your local machine, as defined in [Lab 1](../lab1_setup/).
+> We will be using our __TotallySecure__ project, which is available at https://github.com/HsecCx/workshop-TotallySecure. If you have not already done so, clone the project to your local machine, as defined in [Lab 1](../lab1_setup/).
 
 {: .note }
 While we are reviewing malicious packages in this lab, we won't be executing any of the project code (and for that matter, even if you did run the project, the malicious packages aren't actually used within the project), so there is no risk of introducing malicious packages into your system.
@@ -76,7 +76,7 @@ A growing threat in the era of AI-assisted development is the exploitation of La
 
 #### Real-World Examples
 
-- __"huggingface-cli"__: An LLM suggested this non-existent package for reinforcement learning, which attackers later created with malicious code
+- __"huggingface-cli"__: An LLM suggested this non-existent package for reinforcement learning, which researchers then created, which then lead to 30k downloads in a few months
 - __"langchain-helpers"__: Multiple LLMs suggested this package name for extended functionality, creating an opportunity for malicious package squatting
 - __Framework-specific utilities__: LLMs often suggest packages like "react-utils-advanced" or "vue-helper-tools" that don't exist but sound legitimate
 
@@ -86,8 +86,9 @@ A growing threat in the era of AI-assisted development is the exploitation of La
 ## Key Takeaways
 
 - Malicious Package results are included in Checkmarx SCA results
+- Add a difference between a vuln and malicious code. 
 - Unlike vulnerabilities where we have CVEs, malicious packages don't have a standardized identifier
-- Supply Chain Attacks can be surprisingly unsophisticated, but easily incorporated
+- Supply Chain Attacks can be surprisingly unsophisticated, but easily executed
 - TypoSquatting exploits common typos in popular package names (e.g., "momnet" vs "moment")
 - RepoJacking involves account takeovers to inject malicious code into legitimate packages
 - LLM Hallucination Exploitation is an emerging threat where attackers create packages with names suggested by AI tools

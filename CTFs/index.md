@@ -84,7 +84,7 @@ Each CTF follows a structured format designed for developer skill building:
    ```
 
 2. **Open in VS Code** and connect to Checkmarx project:
-   - Project: `workshop-TotallySecure`
+   - Project: `TotallySecure`
    - Branch: `master`
 
 3. **Verify All Scanners** are complete:
@@ -97,7 +97,7 @@ Each CTF follows a structured format designed for developer skill building:
 
 ## Complete All CTF Challenges
 
-📋 **[Open Comprehensive CTF Form - All Challenges](your-microsoft-forms-link)**
+📋 **[Open Comprehensive CTF Form - All Challenges](https://forms.office.com/r/t1vtEj7BEQ)**
 
 The form includes all three progressive challenge sections:
 - **Supply Chain Detective** (SCA & dependency analysis)
