@@ -132,6 +132,9 @@ Filtering options are __dynamic__ - you'll only see toggles for risk types and t
 - __Release Decisions__: Review overall application risk posture
 - __Security Reviews__: Use ASPM as a comprehensive security dashboard
 
+{: .note }
+ASPM provides the "big picture" view that helps you understand not just individual vulnerabilities, but how they collectively impact your application's security posture. This holistic approach enables better decision-making and more effective risk management.
+
 ## Key Takeaways
 
 - __ASPM provides holistic risk management__ by aggregating findings across all security scanners
