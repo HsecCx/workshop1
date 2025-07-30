@@ -21,18 +21,14 @@ Checkmarx SCA supports all major ecosystems and package managers. A comprehensiv
 ### What is SCA?
 
 Software Composition Analysis (SCA) scans your application's dependencies to identify:
-- **Known vulnerabilities** in open source packages
-- **License compliance** issues and risks  
-- **Outdated packages** with security patches available
-- **Malicious packages** and supply chain attacks
+- __Known vulnerabilities__ in open source packages
+- __License compliance__ issues and risks  
+- __Outdated packages__ with security patches available
+- __Malicious packages__ and supply chain attacks
 
 Unlike SAST which analyzes your custom code, SCA focuses on the security of the third-party components your application depends on.
 
-## Open the TotallySecure Project
 
-1. Within VS Code, navigate to __File__ > __Open Folder...__ and select the folder to which you had previously cloned the workshop-TotallySecure. (e.g. ~/workshop-TotallySecure or %USERPROFILE%\\workshop-TotallySecure)
-
-2. VS Code will open the __workshop-TotallySecure__ folder within the explorer, where you can see the project files
 
 ## Reviewing SCA Results
 

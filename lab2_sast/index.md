@@ -28,16 +28,6 @@ Sure, speed is important, but you can think of speed-focused SAST scans as this 
   ![Fast Security Scan](./assets/images/fast_scan.gif "Fast Security Scan")
 
 
-## Open the TotallySecureApp Project
-
-1. Within VS Code, navigate to __File__ > __Open Folder...__ and select the folder to which you had previously cloned the workshop-TotallySecure. (e.g. ~/workshop-TotallySecure or %USERPROFILE%\\workshop-TotallySecure)
-
-    ![VS Code Open Folder](./assets/images/vscode_openfolder.png "VS Code Open Folder")
-
-2. VS Code will open the __workshop-TotallySecure__ folder within the explorer, where you can see the project files
-
-    ![VS Code Explorer](./assets/images/vscode_explorer.png "VS Code Explorer")
-
 ## Reviewing SAST Results
 
 1. Within the VS Code Checkmarx plugin, expand the latest Scan result.

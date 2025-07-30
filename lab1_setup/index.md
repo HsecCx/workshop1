@@ -50,7 +50,7 @@ Once VS Code is installed, we need to install the Checkmarx plugin. The Visual S
    The Checkmarx Settings form opens.  
    ![Configure Checkmarx Plugin](./assets/images/cx_plugin_config.png "Configure Checkmarx Plugin")
 
-2. First you will need to authenticate the plugin by clicking the **Authentication** link in box 1.  
+2. First you will need to authenticate the plugin by clicking the __Authentication__ link in box 1.  
    Once you click that, choose your method below to see the corresponding settings:
 
    {: .note }
