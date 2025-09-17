@@ -41,7 +41,55 @@ __ASPM takes a different approach__ by:
 - Prioritizing based on application context
 - Showing the "big picture" of application security health
 
-## Accessing ASPM Results in VS Code
+## Accessing ASPM Results
+
+<style>
+.auth-tabs {
+  margin: 20px 0;
+}
+.auth-tabs input[type="radio"] {
+  display: none;
+}
+.auth-tabs label {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.auth-tabs label:hover {
+  background: #e0e0e0;
+}
+.auth-tabs input[type="radio"]:checked + label {
+  background: #007acc;
+  color: white;
+}
+.auth-content {
+  display: none;
+  padding: 20px;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+  clear: both;
+}
+.auth-tabs #vscode-access-tab:checked ~ .vscode-access-content,
+.auth-tabs #cursor-access-tab:checked ~ .cursor-access-content,
+.auth-tabs #vscode-analyze-tab:checked ~ .vscode-analyze-content,
+.auth-tabs #cursor-analyze-tab:checked ~ .cursor-analyze-content,
+.auth-tabs #vscode-filter-tab:checked ~ .vscode-filter-content,
+.auth-tabs #cursor-filter-tab:checked ~ .cursor-filter-content {
+  display: block;
+}
+</style>
+
+<div class="auth-tabs">
+  <input type="radio" id="vscode-access-tab" name="aspm-access" checked>
+  <label for="vscode-access-tab">VS Code</label>
+  
+  <input type="radio" id="cursor-access-tab" name="aspm-access">
+  <label for="cursor-access-tab">Cursor</label>
+  
+  <div class="auth-content vscode-access-content" markdown="1">
 
 1. __Ensure Project Association__: ASPM data is only shown when your project is associated with a Checkmarx One application
 
@@ -52,6 +100,24 @@ __ASPM takes a different approach__ by:
 3. __View Application Risks__: The ASPM section displays applications associated with your current project, showing the most severe risks for each
 
     ![ASPM Applications](./assets/images/aspm_applications.png "ASPM Applications View")
+
+  </div>
+
+  <div class="auth-content cursor-access-content" markdown="1">
+
+1. __Ensure Project Association__: ASPM data is only shown when your project is associated with a Checkmarx One application
+
+2. __Navigate to the ASPM Section__: In the Checkmarx Cursor extension panel, look for the dedicated ASPM section (separate from individual scan results)
+
+    ![Cursor ASPM Section](./assets/images/cursor_aspm_section.png "ASPM Section in Cursor")
+
+3. __View Application Risks__: The ASPM section displays applications associated with your current project, showing the most severe risks for each
+
+    ![Cursor ASPM Applications](./assets/images/cursor_aspm_applications.png "Cursor ASPM Applications View")
+
+  </div>
+
+</div>
 
 {: .warning }
 __Important__: If your selected project is not associated with any applications, no ASPM data will be shown. ASPM data is only displayed when viewing the most recent scan of the selected project.
@@ -73,6 +139,15 @@ ASPM categorizes security findings into logical groups:
 
 ### Analyzing Individual Risks
 
+<div class="auth-tabs">
+  <input type="radio" id="vscode-analyze-tab" name="aspm-analyze" checked>
+  <label for="vscode-analyze-tab">VS Code</label>
+  
+  <input type="radio" id="cursor-analyze-tab" name="aspm-analyze">
+  <label for="cursor-analyze-tab">Cursor</label>
+  
+  <div class="auth-content vscode-analyze-content" markdown="1">
+
 1. __Click on an Application__ to expand and view its associated risks
 
 2. __Review Risk Details__: Each risk shows:
@@ -82,6 +157,24 @@ ASPM categorizes security findings into logical groups:
 3. __Deep Dive into Risks__: Click on any risk to open detailed information in the same view used for individual scan results
 
     ![ASPM Risk Details](./assets/images/aspm_risk_details.png "ASPM Risk Details")
+
+  </div>
+
+  <div class="auth-content cursor-analyze-content" markdown="1">
+
+1. __Click on an Application__ to expand and view its associated risks
+
+2. __Review Risk Details__: Each risk shows:
+   - Risk severity and score
+   - Business impact assessment
+
+3. __Deep Dive into Risks__: Click on any risk to open detailed information in the same view used for individual scan results
+
+    ![Cursor ASPM Risk Details](./assets/images/cursor_aspm_risk_details.png "Cursor ASPM Risk Details")
+
+  </div>
+
+</div>
 
 ### Advanced Risk Traits
 
@@ -102,6 +195,15 @@ Click the sort icon to organize applications by:
 
 ### Dynamic Filtering
 
+<div class="auth-tabs">
+  <input type="radio" id="vscode-filter-tab" name="aspm-filter" checked>
+  <label for="vscode-filter-tab">VS Code</label>
+  
+  <input type="radio" id="cursor-filter-tab" name="aspm-filter">
+  <label for="cursor-filter-tab">Cursor</label>
+  
+  <div class="auth-content vscode-filter-content" markdown="1">
+
 The filter icon provides dynamic filtering based on your application's actual findings:
 
 1. __Filter by Risk Type__: Toggle visibility for Code, Direct Package, Transitive Package, Configuration, etc.
@@ -112,6 +214,25 @@ The filter icon provides dynamic filtering based on your application's actual fi
    - Other identified risk factors
 
     ![ASPM Filtering](./assets/images/aspm_filtering.png "ASPM Filtering Options")
+
+  </div>
+
+  <div class="auth-content cursor-filter-content" markdown="1">
+
+The filter icon provides dynamic filtering based on your application's actual findings:
+
+1. __Filter by Risk Type__: Toggle visibility for Code, Direct Package, Transitive Package, Configuration, etc.
+
+2. __Filter by Risk Traits__: Show/hide risks with special characteristics like:
+   - Suspected Malware
+   - Exploitable Path
+   - Other identified risk factors
+
+    ![Cursor ASPM Filtering](./assets/images/cursor_aspm_filtering.png "Cursor ASPM Filtering Options")
+
+  </div>
+
+</div>
 
 {: .note }
 Filtering options are __dynamic__ - you'll only see toggles for risk types and traits that actually exist in your application's findings.

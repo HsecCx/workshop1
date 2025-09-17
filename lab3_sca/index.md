@@ -32,6 +32,50 @@ Unlike SAST which analyzes your custom code, SCA focuses on the security of the 
 
 ## Reviewing SCA Results
 
+<style>
+.auth-tabs {
+  margin: 20px 0;
+}
+.auth-tabs input[type="radio"] {
+  display: none;
+}
+.auth-tabs label {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.auth-tabs label:hover {
+  background: #e0e0e0;
+}
+.auth-tabs input[type="radio"]:checked + label {
+  background: #007acc;
+  color: white;
+}
+.auth-content {
+  display: none;
+  padding: 20px;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+  clear: both;
+}
+.auth-tabs #vscode-sca-tab:checked ~ .vscode-sca-content,
+.auth-tabs #cursor-sca-tab:checked ~ .cursor-sca-content {
+  display: block;
+}
+</style>
+
+<div class="auth-tabs">
+  <input type="radio" id="vscode-sca-tab" name="sca-results" checked>
+  <label for="vscode-sca-tab">VS Code</label>
+  
+  <input type="radio" id="cursor-sca-tab" name="sca-results">
+  <label for="cursor-sca-tab">Cursor</label>
+  
+  <div class="auth-content vscode-sca-content" markdown="1">
+
 Within the Checkmarx VS Code plugin, ensure you are connected to the project, branch, and scan result as noted in the __Connect to a project__ section in [Lab 1](../lab1_setup/).
 
 {: .note }
@@ -65,6 +109,48 @@ Malicious Packages will always be returned in SCA Critical results. We look at m
 
     {: .note }
     While Checkmarx SCA will often have recommendations to upgrade package versions to address found vulnerabilities, we understand it's not always as simple as just changing a version. We recommend when upgrading package versions, you do so one at a time in a test or staging environment and performing a regression test to ensure no functionality is broken or lost within your application. In the event that application functionality is affected, we recommend you coordinate with your internal Security organization to define a remediation plan or implement other mitigation steps to minimize the impact of the vulnerability.
+
+  </div>
+
+  <div class="auth-content cursor-sca-content" markdown="1">
+
+Within the Checkmarx Cursor plugin, ensure you are connected to the project, branch, and scan result as noted in the __Connect to a project__ section in [Lab 1](../lab1_setup/).
+
+{: .note }
+Malicious Packages will always be returned in SCA Critical results. We look at malicious packages in a different lab in [Lab 4](../lab4_malicious_packages/)
+
+1. Navigate to the Checkmarx Plugin in the left menu of Cursor and expand the latest scan result
+
+2. Expand the __sca__ section to view Software Composition Analysis results
+
+3. The plugin gives you the capability to group results in several different ways. For this exercise, we will use grouping by severity. Look for the grouping dropdown or icon in the SCA results panel and select "Group by Severity"
+
+    ![Cursor SCA Group By Severity](./assets/images/cursor_group_by_severity.png "Cursor SCA Group By Severity")
+
+4. Expand the __Critical__ section to see the most severe vulnerabilities
+
+    ![Cursor SCA Critical Results](./assets/images/cursor_sca_critical_results.png "Cursor SCA Critical Results")
+
+5. Expand the __Maven-org.apache.tomcat:tomcat-coyote-9.0.22__ result to see the specific vulnerabilities in this package
+
+6. Choose __CVE-2020-1938__ and review the description within the pane opened within Cursor.
+
+    ```
+    When using the Apache JServ Protocol (AJP), care must be taken when trusting incoming connections to Apache Tomcat. Tomcat treats AJP connections as having higher trust than, for example, a similar HTTP connection. If such connections are available to an attacker, they can be exploited in ways that may be surprising. In Apache Tomcat 9.0.0.M1 to 9.0.0.30, 8.5.0 to 8.5.50 and 7.0.0 to 7.0.99, Tomcat shipped with an AJP Connector enabled by default that listened on all configured IP addresses. It was expected (and recommended in the security guide) that this Connector would be disabled if not required. This vulnerability report identified a mechanism that allowed: - returning arbitrary files from anywhere in the web application - processing any file in the web application as a JSP Further, if the web application allowed file upload and stored those files within the web application (or the attacker was able to control the content of the web application by some other means) then this, along with the ability to process a file as a JSP, made remote code execution possible. It is important to note that mitigation is only required if an AJP port is accessible to untrusted users. Users wishing to take a defence-in-depth approach and block the vector that permits returning arbitrary files and execution as JSP may upgrade to Apache Tomcat 9.0.31, 8.5.51 or 7.0.100 or later. A number of changes were made to the default AJP Connector configuration in 9.0.31 to harden the default configuration. It is likely that users upgrading to 9.0.31, 8.5.51 or 7.0.100 or later will need to make small changes to their configurations.  
+    ```
+
+7. We can see the recommended remediation is to __Upgrade To Version 9.0.107__. Additionally there is a link to the vulnerable package path, which is found within deploy/pom.xml. Click on __deploy/pom.xml__.
+
+    ![Cursor SCA Tomcat Result](./assets/images/cursor_sca_tomcat_result.png "Cursor SCA Tomcat Result")
+
+8. Within the __deploy/pom.xml__ file, we can update the Tomcat version from __9.0.22__ to version __9.0.107__.
+
+    {: .note }
+    While Checkmarx SCA will often have recommendations to upgrade package versions to address found vulnerabilities, we understand it's not always as simple as just changing a version. We recommend when upgrading package versions, you do so one at a time in a test or staging environment and performing a regression test to ensure no functionality is broken or lost within your application. In the event that application functionality is affected, we recommend you coordinate with your internal Security organization to define a remediation plan or implement other mitigation steps to minimize the impact of the vulnerability.
+
+  </div>
+
+</div>
 
 ## Learning more about SCA Results
 

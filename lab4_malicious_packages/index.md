@@ -34,6 +34,54 @@ Supply chain attacks target the dependencies and packages your application relie
 
 ## Reviewing Malicious SCA Results
 
+<style>
+.auth-tabs {
+  margin: 20px 0;
+}
+.auth-tabs input[type="radio"] {
+  display: none;
+}
+.auth-tabs label {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.auth-tabs label:hover {
+  background: #e0e0e0;
+}
+.auth-tabs input[type="radio"]:checked + label {
+  background: #007acc;
+  color: white;
+}
+.auth-content {
+  display: none;
+  padding: 20px;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+  clear: both;
+}
+.auth-tabs #vscode-malicious-tab:checked ~ .vscode-malicious-content,
+.auth-tabs #cursor-malicious-tab:checked ~ .cursor-malicious-content,
+.auth-tabs #vscode-typo-tab:checked ~ .vscode-typo-content,
+.auth-tabs #cursor-typo-tab:checked ~ .cursor-typo-content,
+.auth-tabs #vscode-repo-tab:checked ~ .vscode-repo-content,
+.auth-tabs #cursor-repo-tab:checked ~ .cursor-repo-content {
+  display: block;
+}
+</style>
+
+<div class="auth-tabs">
+  <input type="radio" id="vscode-malicious-tab" name="malicious-results" checked>
+  <label for="vscode-malicious-tab">VS Code</label>
+  
+  <input type="radio" id="cursor-malicious-tab" name="malicious-results">
+  <label for="cursor-malicious-tab">Cursor</label>
+  
+  <div class="auth-content vscode-malicious-content" markdown="1">
+
 Malicious Package results are included in the Checkmarx SCA scan engine. Within the Checkmarx VS Code plugin, ensure you are connected to the project, branch, and scan result as noted in the __Connect to a project__ section in [Lab 1](../lab1_setup/).
 
 {: .note }
@@ -49,6 +97,29 @@ Malicious packages are also detectable through Application Security Posture Mana
 
     ![SCA Critical Results](./assets/images/malicious_package_critical_results.png "SCA Critical Results")
 
+  </div>
+
+  <div class="auth-content cursor-malicious-content" markdown="1">
+
+Malicious Package results are included in the Checkmarx SCA scan engine. Within the Checkmarx Cursor plugin, ensure you are connected to the project, branch, and scan result as noted in the __Connect to a project__ section in [Lab 1](../lab1_setup/).
+
+{: .note }
+Malicious packages are also detectable through Application Security Posture Management (ASPM) capabilities, which provide another way to easily filter and prioritize these threats.
+
+1. Navigate to the Checkmarx Plugin in the left menu of Cursor and expand the latest scan result
+
+2. Expand the __sca__ section to view Software Composition Analysis results
+
+3. Look for the grouping dropdown or icon in the SCA results panel and select "Group by Severity"
+
+4. Expand the __Critical__ section to see the most severe vulnerabilities, including malicious packages
+
+    ![Cursor SCA Critical Results](./assets/images/cursor_malicious_package_critical_results.png "Cursor SCA Critical Results")
+
+  </div>
+
+</div>
+
 {: .note }
 Note that to date, unlike vulnerabilities where we have a common standard of CVE, there is no standardized universal ID for malicious packages. For example, IDs of the same incident:
 - cx-2021-b8833-be2146 (Checkmarx)
@@ -60,6 +131,15 @@ Note that to date, unlike vulnerabilities where we have a common standard of CVE
 
 TypoSquatting attacks exploit common typos in popular package names to trick developers into installing malicious packages.
 
+<div class="auth-tabs">
+  <input type="radio" id="vscode-typo-tab" name="typo-results" checked>
+  <label for="vscode-typo-tab">VS Code</label>
+  
+  <input type="radio" id="cursor-typo-tab" name="typo-results">
+  <label for="cursor-typo-tab">Cursor</label>
+  
+  <div class="auth-content vscode-typo-content" markdown="1">
+
 1. Expand the __Npm-momnet-2.29.1__ result, and select the __Cx43050644-3add__ result. Note how a new pane opens at the far right with a description of the malicious package.
 
     ![Cx43050644-3add](./assets/images/Cx43050644-3add.png "Cx43050644-3add")
@@ -70,9 +150,36 @@ TypoSquatting attacks exploit common typos in popular package names to trick dev
 
     ![momnet](./assets/images/momnet.png "momnet")
 
+  </div>
+
+  <div class="auth-content cursor-typo-content" markdown="1">
+
+1. Expand the __Npm-momnet-2.29.1__ result, and select the __Cx43050644-3add__ result. Note how a new pane opens at the far right with a description of the malicious package.
+
+    ![Cursor Cx43050644-3add](./assets/images/cursor_Cx43050644-3add.png "Cursor Cx43050644-3add")
+
+2. Per the malicious package description, we can see this is a malicious package using the __Typo Squatting__ attack. The package creators are hoping that a developer mistypes "moment" and accidentally imports their package instead, which includes a malicious method that deletes the inner HTML body and crashes the app.
+
+3. We can fix this malicious package by clicking on the Vulnerable package path which links to package.json and changing the package name from __momnet__ to __moment__:
+
+    ![Cursor momnet](./assets/images/cursor_momnet.png "Cursor momnet")
+
+  </div>
+
+</div>
+
 ## Attack Type 2: RepoJacking
 
 RepoJacking involves account takeovers to inject malicious code into legitimate packages.
+
+<div class="auth-tabs">
+  <input type="radio" id="vscode-repo-tab" name="repo-results" checked>
+  <label for="vscode-repo-tab">VS Code</label>
+  
+  <input type="radio" id="cursor-repo-tab" name="repo-results">
+  <label for="cursor-repo-tab">Cursor</label>
+  
+  <div class="auth-content vscode-repo-content" markdown="1">
 
 1. Navigate back to the SCA results and expand the __High__ section
 
@@ -85,6 +192,26 @@ RepoJacking involves account takeovers to inject malicious code into legitimate 
 4. Click on "Upgrade to Version," and the Checkmarx plugin will automatically update our package version within package.json to 0.7.33
 
     ![ua-parser-fix](./assets/images/ua-parser-fix.png "ua-parser-fix")
+
+  </div>
+
+  <div class="auth-content cursor-repo-content" markdown="1">
+
+1. Navigate back to the SCA results and expand the __High__ section
+
+2. Expand the __Npm-ua-parser-js-0.7.29__ result and select __CVE-2021-4229__
+
+    ![Cursor ua-parser](./assets/images/cursor_ua-parser.png "Cursor ua-parser")
+
+3. Reviewing the malicious package description, we can see that ua-parser-js had three versions published with malicious code. The three affected versions (0.7.29, 0.8.0, and 1.0.0) were the result of an account takeover, otherwise known as __Repojacking__. We can see in the remediation advice that we can upgrade to version 0.7.33 to ensure we are not importing an affected version.
+
+4. Click on "Upgrade to Version," and the Checkmarx plugin will automatically update our package version within package.json to 0.7.33
+
+    ![Cursor ua-parser-fix](./assets/images/cursor_ua-parser-fix.png "Cursor ua-parser-fix")
+
+  </div>
+
+</div>
 
 ## Attack Type 3: LLM Hallucination Exploitation
 

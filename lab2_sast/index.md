@@ -30,11 +30,21 @@ Sure, speed is important, but you can think of speed-focused SAST scans as this 
 
 ## Reviewing SAST Results
 
+<div class="auth-tabs">
+  <input type="radio" id="vscode-results-tab" name="sast-results" checked>
+  <label for="vscode-results-tab">VS Code</label>
+  
+  <input type="radio" id="cursor-results-tab" name="sast-results">
+  <label for="cursor-results-tab">Cursor</label>
+  
+  <div class="auth-content vscode-results-content" markdown="1">
+
 1. Within the VS Code Checkmarx plugin, expand the latest Scan result.
 
     ![VS Code Plugin](./assets/images/vscode_cx_plugin.png "VS Code Plugin")
 
 2. Click the __M__ (Medium), __L__ (Low), and __I__ (Info) icons to filter out everything other than the __H__ (High) and __C__ (Critical) results
+
     ![SAST Filter](./assets/images/sast_filter.png "SAST Filter")
 
 3. Expand the __sast > Critical__ menu in the left panel to review the SAST scan results
@@ -61,6 +71,46 @@ Sure, speed is important, but you can think of speed-focused SAST scans as this 
 
     ![SQL Injection Code Sample](./assets/images/sqli_code_sample.png "SQL Injection Code Sample")
 
+  </div>
+
+  <div class="auth-content cursor-results-content" markdown="1">
+
+1. Within the Cursor Checkmarx plugin, expand the latest Scan result.
+
+    ![Cursor Plugin](./assets/images/cursor_cx_plugin.png "Cursor Plugin")
+
+2. Click the __M__ (Medium), __L__ (Low), and __I__ (Info) icons to filter out everything other than the __H__ (High) and __C__ (Critical) results
+
+    ![Cursor SAST Filter](./assets/images/cursor_sast_filter.png "Cursor SAST Filter")
+
+3. Expand the __sast > Critical__ menu in the left panel to review the SAST scan results
+4. Select the __SQL Injection (/SQLInjectionController.java:30)__ result from the Critical findings
+
+    ![Cursor SAST Critical](./assets/images/cursor_sast_critical.png "Cursor SAST Critical")
+
+5. A pane will open with Cursor to the right, which provides a detailed description of the identified vulnerability along with the attack vector.
+
+    ![Cursor SQL Injection](./assets/images/cursor_sqli.png "Cursor SQL Injection")
+
+6. Because Checkmarx scans source code and builds a Data Flow Graph, it can identify the source and sink of vulnerabilities, identifying where best to implement a fix to resolve the vulnerability. Click on the first Attack Vector link, __1. "name" ...ggy4sb/vulnerabilities/SQLInjectionController.java [30:88]__, Cursor will open the specific file and highlight the parameter that Checkmarx has identified as the source of the vulnerability
+
+    ![Cursor SQL Injection Best Fix Location](./assets/images/cursor_sqli_bfl.png "Cursor SQL Injection Best Fix Location")
+
+7. Reviewing the code, we can see within the result that we're taking direct input of a name and just trimming it and checking if it's blank, otherwise we pass on the input to be later executed as part of a SQL query, which could result in a SQL injection attack. Click on __Description__ in the far right pane to see a description of the risk in greater detail:
+
+    {: .note }
+    Note that right below the description there is the option to go to __Codebashing__, the Checkmarx One just-in-time training platform that provides interactive lessons on fixing the specific vulnerability you're viewing. 
+
+    ![Cursor SQL Injection Learn More](./assets/images/cursor_sqli_learnmore.png "Cursor SQL Injection Learn More")
+
+8. Click on __Remediation Examples__ to see an example of how to implement a sanitizer within the code to mitigate the SQL Injection vulnerability
+
+    ![Cursor SQL Injection Code Sample](./assets/images/cursor_sqli_code_sample.png "Cursor SQL Injection Code Sample")
+
+  </div>
+
+</div>
+
 ## AI Secure Coding Assistant (ASCA)
 
 The AI Secure Coding Assistant (ASCA) is an advanced real-time scanning feature integrated into the Checkmarx VS Code extension. Unlike traditional SAST scans that occur after code is written, ASCA provides __instant security feedback as you type__, helping developers identify and fix security issues during development.
@@ -68,6 +118,53 @@ The AI Secure Coding Assistant (ASCA) is an advanced real-time scanning feature 
 {: .note }
 ASCA is evolving into "Developer Assist" with enhanced agentic AI capabilities. For the latest information on this evolution, visit [Checkmarx AI Platform](https://checkmarx.ai/) and access the full summit content.
 
+<style>
+.auth-tabs {
+  margin: 20px 0;
+}
+.auth-tabs input[type="radio"] {
+  display: none;
+}
+.auth-tabs label {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.auth-tabs label:hover {
+  background: #e0e0e0;
+}
+.auth-tabs input[type="radio"]:checked + label {
+  background: #007acc;
+  color: white;
+}
+.auth-content {
+  display: none;
+  padding: 20px;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+  clear: both;
+}
+.auth-tabs #asca-enabled-tab:checked ~ .asca-enabled-content,
+.auth-tabs #asca-disabled-tab:checked ~ .asca-disabled-content,
+.auth-tabs #vscode-results-tab:checked ~ .vscode-results-content,
+.auth-tabs #cursor-results-tab:checked ~ .cursor-results-content,
+.auth-tabs #vscode-triage-tab:checked ~ .vscode-triage-content,
+.auth-tabs #cursor-triage-tab:checked ~ .cursor-triage-content {
+  display: block;
+}
+</style>
+
+<div class="auth-tabs">
+  <input type="radio" id="asca-enabled-tab" name="asca-section" checked>
+  <label for="asca-enabled-tab">ASCA Enabled</label>
+  
+  <input type="radio" id="asca-disabled-tab" name="asca-section">
+  <label for="asca-disabled-tab">ASCA Not Available</label>
+  
+  <div class="auth-content asca-enabled-content" markdown="1">
 
 ### How ASCA Works
 
@@ -119,7 +216,7 @@ ASCA runs as a lightweight background process on your local machine, automatical
 If you have GitHub Copilot installed, ASCA can generate customized code fixes:
 
 1. __Select the ASCA Result in the Problems Terminal__ and click the __lightbulb__ icon (Show Code Actions). You can select "Fix using Copilot" to generate a code fix or you can select the "Explain using Copilot" to generate a detailed explanation of the vulnerability with an example fix. 
-
+ 
     ![ASCA Copilot Fix](./assets/images/asca_problems_fix.png)
 
 
@@ -146,8 +243,84 @@ __Try It Now__: Generate a fix or explanation from the vulnerability we added.
 {: .warning }
 __Important Considerations__: ASCA results are __local only__ and do not sync with the Checkmarx One platform. ASCA analyzes __single files only__, not cross-file data flows. While ASCA provides valuable real-time feedback, it should __supplement__, not replace, comprehensive Checkmarx One scans.
 
+  </div>
+
+  <div class="auth-content asca-disabled-content" markdown="1">
+
+### Understanding Real-time Security Analysis
+
+While ASCA provides real-time security feedback, you can still gain valuable insights about how modern security tools work by understanding the concept of real-time analysis and exploring the vulnerable code samples.
+
+### Key Concepts
+
+- __Real-time Analysis__: Modern tools scan code as you type with sub-second response times
+- __Local Processing__: Advanced tools run entirely on your local machine for privacy and speed  
+- __Visual Indicators__: Security tools show color-coded underlines to indicate vulnerability severity
+- __IDE Integration__: Results appear integrated within your development environment
+- __AI-Powered Remediation__: AI can generate customized security fixes
+- __Multiple Language Support__: Modern tools support Java, JavaScript (Node.js), C#, Python, and more
+
+### Exploring Vulnerable Code (Optional Exercise)
+
+Even without ASCA, you can explore how security vulnerabilities look in code:
+
+1. __Open a vulnerable file__ by selecting the `src\main\java\org\t246osslab\easybuggy4sb\controller\CxController.java` file 
+
+2. __Review the vulnerable function__ Look at this example of a vulnerable file upload function:
+
+    ```java
+    @PostMapping("upload")
+    public String uploadFile(@RequestParam("file") MultipartFile file) {
+        try {
+            // Save the uploaded file to the server's filesystem
+            File uploadedFile = new File("/tmp/" + file.getOriginalFilename());
+            try (FileOutputStream fos = new FileOutputStream(uploadedFile)) {
+                fos.write(file.getBytes());
+            }
+            return "File uploaded successfully: " + uploadedFile.getAbsolutePath();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Failed to upload file.";
+        }
+    }
+    ```
+
+3. __Identify the security issues__: Can you spot the security vulnerabilities in this code?
+   - **Path Traversal**: Direct use of `file.getOriginalFilename()` without validation
+   - **Unrestricted File Upload**: No file type or size restrictions
+   - **Information Disclosure**: Exposing file system paths in response
+
+4. __Manual Security Review__: Practice identifying security issues by manually reviewing the TotallySecure codebase
+
+### Traditional SAST vs Real-time Analysis
+
+| Feature | Real-time Tools (like ASCA) | Traditional SAST |
+|---------|------------------------------|------------------|
+| __Timing__ | Real-time (as you type) | On-demand or scheduled |
+| __Scope__ | Single file | Entire codebase |
+| __Speed__ | Milliseconds | Minutes to hours |
+| __Location__ | Local machine | Cloud/server |
+| __Integration__ | Problems panel, underlines | Separate results viewer |
+| __Remediation__ | AI-powered suggestions | Manual implementation |
+
+{: .note }
+__Learning Focus__: While you won't see real-time feedback, you're learning the same security concepts and can practice manual code review skills that complement automated tools.
+
+  </div>
+
+</div>
+
 ## Triaging Results
 While Checkmarx One can identify vulnerabilities in source code by validating that sanitizers are in place since it has visibility into data flow, it is relatively limited in its ability to detect control flow based validation.  Perhaps we have validation within our application that we know will ensure our code is not subject to a vulnerability. We have the ability to triage results from within the IDE where we can mark them as "Proposed Not Exploitable" so they can be reviewed to determine if they can be updated to "Not Exploitable" to prevent them from appearing in future results.
+
+<div class="auth-tabs">
+  <input type="radio" id="vscode-triage-tab" name="triage-results" checked>
+  <label for="vscode-triage-tab">VS Code</label>
+  
+  <input type="radio" id="cursor-triage-tab" name="triage-results">
+  <label for="cursor-triage-tab">Cursor</label>
+  
+  <div class="auth-content vscode-triage-content" markdown="1">
 
 1. Navigate back to the SAST results and expand the __sast > High__ menu to find __Reflected XSS All Clients__ results.
 2. Select any one of the __Reflected XSS All Clients__ results.
@@ -163,6 +336,29 @@ While Checkmarx One can identify vulnerabilities in source code by validating th
 5. The result will now disappear from the SAST High results.  If we want to review the result again, we can select the filter icon, and de-select all options other than __"Proposed Not Exploitable"__
     
     ![Proposed Not Exploitable](./assets/images/proposed_not_exploitable.png "Proposed Not Exploitable")
+
+  </div>
+
+  <div class="auth-content cursor-triage-content" markdown="1">
+
+1. Navigate back to the SAST results and expand the __sast > High__ menu to find __Reflected XSS All Clients__ results.
+2. Select any one of the __Reflected XSS All Clients__ results.
+
+3. In the right pane, change the second drop down from __To Verify__ to __Proposed Not Exploitable__ and enter a comment, such as
+
+        We have a validator in our code to ensure that this variable will only include known inputs.
+
+    ![Cursor Triage Result](./assets/images/cursor_triage.png "Cursor Triage Results")
+
+4. Click __Update__
+
+5. The result will now disappear from the SAST High results.  If we want to review the result again, we can select the filter icon, and de-select all options other than __"Proposed Not Exploitable"__
+    
+    ![Cursor Proposed Not Exploitable](./assets/images/cursor_proposed_not_exploitable.png "Cursor Proposed Not Exploitable")
+
+  </div>
+
+</div>
 
 
 
