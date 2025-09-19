@@ -95,11 +95,11 @@ __ASPM takes a different approach__ by:
 
 2. __Navigate to the ASPM Section__: In the Checkmarx VS Code extension panel, look for the dedicated ASPM section (separate from individual scan results)
 
-    ![ASPM Section](./assets/images/aspm_section.png "ASPM Section in VS Code")
+    ![ASPM Section](./assets/images/vscode/aspm_section.png "ASPM Section in VS Code")
 
 3. __View Application Risks__: The ASPM section displays applications associated with your current project, showing the most severe risks for each
 
-    ![ASPM Applications](./assets/images/aspm_applications.png "ASPM Applications View")
+    ![ASPM Applications](./assets/images/vscode/aspm_applications.png "ASPM Applications View")
 
   </div>
 
@@ -109,11 +109,11 @@ __ASPM takes a different approach__ by:
 
 2. __Navigate to the ASPM Section__: In the Checkmarx Cursor extension panel, look for the dedicated ASPM section (separate from individual scan results)
 
-    ![Cursor ASPM Section](./assets/images/cursor_aspm_section.png "ASPM Section in Cursor")
+    ![Cursor ASPM Section](./assets/images/cursor/cursor_aspm_section.png "ASPM Section in Cursor")
 
 3. __View Application Risks__: The ASPM section displays applications associated with your current project, showing the most severe risks for each
 
-    ![Cursor ASPM Applications](./assets/images/cursor_aspm_applications.png "Cursor ASPM Applications View")
+    ![Cursor ASPM Applications](./assets/images/cursor/cursor_aspm_applications.png "Cursor ASPM Applications View")
 
   </div>
 
@@ -156,7 +156,7 @@ ASPM categorizes security findings into logical groups:
 
 3. __Deep Dive into Risks__: Click on any risk to open detailed information in the same view used for individual scan results
 
-    ![ASPM Risk Details](./assets/images/aspm_risk_details.png "ASPM Risk Details")
+    ![ASPM Risk Details](./assets/images/vscode/aspm_risk_details.png "ASPM Risk Details")
 
   </div>
 
@@ -170,7 +170,7 @@ ASPM categorizes security findings into logical groups:
 
 3. __Deep Dive into Risks__: Click on any risk to open detailed information in the same view used for individual scan results
 
-    ![Cursor ASPM Risk Details](./assets/images/cursor_aspm_risk_details.png "Cursor ASPM Risk Details")
+    ![Cursor ASPM Risk Details](./assets/images/cursor/cursor_aspm_risk_details.png "Cursor ASPM Risk Details")
 
   </div>
 
@@ -213,7 +213,7 @@ The filter icon provides dynamic filtering based on your application's actual fi
    - Exploitable Path
    - Other identified risk factors
 
-    ![ASPM Filtering](./assets/images/aspm_filtering.png "ASPM Filtering Options")
+    ![ASPM Filtering](./assets/images/vscode/aspm_filtering.png "ASPM Filtering Options")
 
   </div>
 
@@ -228,7 +228,7 @@ The filter icon provides dynamic filtering based on your application's actual fi
    - Exploitable Path
    - Other identified risk factors
 
-    ![Cursor ASPM Filtering](./assets/images/cursor_aspm_filtering.png "Cursor ASPM Filtering Options")
+    ![Cursor ASPM Filtering](./assets/images/cursor/cursor_aspm_filtering.png "Cursor ASPM Filtering Options")
 
   </div>
 

@@ -85,13 +85,13 @@ Malicious Packages will always be returned in SCA Critical results. We look at m
 
 2. Expand the __sca__ section to view Software Composition Analysis results
 
-3. The plugin gives you the capability to group results in several different ways. For this exercise, we will use grouping by severity. Look for the grouping dropdown or icon in the SCA results panel and select "Group by Severity"
+3. The plugin gives you the capability to group results in several different ways. For this exercise, we will use grouping by severity. Look for the grouping dropdown or icon in the SCA results panel and select "Group by Severity" and "Group by Vulnerability Type"
 
-    ![SCA Group By Severity](./assets/images/group_by_severity.png "SCA Group By Severity")
+    ![SCA Group By Severity](./assets/images/vscode/group_by_severity.png "SCA Group By Severity")
 
 4. Expand the __Critical__ section to see the most severe vulnerabilities
 
-    ![SCA Critical Results](./assets/images/sca_critical_results.png "SCA Critical Results")
+    ![SCA Critical Results](./assets/images/vscode/sca_critical_results.png "SCA Critical Results")
 
 5. Expand the __Maven-org.apache.tomcat:tomcat-coyote-9.0.22__ result to see the specific vulnerabilities in this package
 
@@ -103,7 +103,7 @@ Malicious Packages will always be returned in SCA Critical results. We look at m
 
 7. We can see the recommended remediation is to __Upgrade To Version 9.0.107__. Additionally there is a link to the vulnerable package path, which is found within deploy/pom.xml. Click on __deploy/pom.xml__.
 
-    ![SCA Tomcat Result](./assets/images/sca_tomcat_result.png "SCA Tomcat Result")
+    ![SCA Tomcat Result](./assets/images/vscode/sca_tomcat_result.png "SCA Tomcat Result")
 
 8. Within the __deploy/pom.xml__ file, we can update the Tomcat version from __9.0.22__ to version __9.0.107__.
 
@@ -123,13 +123,13 @@ Malicious Packages will always be returned in SCA Critical results. We look at m
 
 2. Expand the __sca__ section to view Software Composition Analysis results
 
-3. The plugin gives you the capability to group results in several different ways. For this exercise, we will use grouping by severity. Look for the grouping dropdown or icon in the SCA results panel and select "Group by Severity"
+3. The plugin gives you the capability to group results in several different ways. For this exercise, we will use grouping by severity. Look for the grouping dropdown or icon in the SCA results panel and select "Group by Severity" and "Group by Vulnerability Type".
 
-    ![Cursor SCA Group By Severity](./assets/images/cursor_group_by_severity.png "Cursor SCA Group By Severity")
+    ![Cursor SCA Group By Severity](./assets/images/cursor/cursor_group_by_severity.png "Cursor SCA Group By Severity")
 
 4. Expand the __Critical__ section to see the most severe vulnerabilities
 
-    ![Cursor SCA Critical Results](./assets/images/cursor_sca_critical_results.png "Cursor SCA Critical Results")
+    ![Cursor SCA Critical Results](./assets/images/cursor/cursor_sca_critical_results.png "Cursor SCA Critical Results")
 
 5. Expand the __Maven-org.apache.tomcat:tomcat-coyote-9.0.22__ result to see the specific vulnerabilities in this package
 
@@ -141,7 +141,7 @@ Malicious Packages will always be returned in SCA Critical results. We look at m
 
 7. We can see the recommended remediation is to __Upgrade To Version 9.0.107__. Additionally there is a link to the vulnerable package path, which is found within deploy/pom.xml. Click on __deploy/pom.xml__.
 
-    ![Cursor SCA Tomcat Result](./assets/images/cursor_sca_tomcat_result.png "Cursor SCA Tomcat Result")
+    ![Cursor SCA Tomcat Result](./assets/images/cursor/cursor_sca_tomcat_result.png "Cursor SCA Tomcat Result")
 
 8. Within the __deploy/pom.xml__ file, we can update the Tomcat version from __9.0.22__ to version __9.0.107__.
 
@@ -156,13 +156,13 @@ Malicious Packages will always be returned in SCA Critical results. We look at m
 
 1. Aside from built-in result information within the Checkmarx Plugin in VSCode, there is a wealth of information available on [Checkmarx's DevHub, devhub.checkmarx.com](https://devhub.checkmarx.com):
 
-    ![DevHub](./assets/images/devhub.png "DevHub")
+    ![DevHub](./assets/images/vscode/devhub.png "DevHub")
 
 2. You can see this same result available within the [Vulnerabilities Database](https://devhub.checkmarx.com/cve-details/CVE-2020-1938/).
 
 3. In addition to DevHub, Checkmarx also can provide email notifications of when new vulnerabilities arise related to previously discovered packages within your projects
 
-    ![SCA Email](./assets/images/sca_email.png "SCA Email")
+    ![SCA Email](./assets/images/vscode/sca_email.png "SCA Email")
 
 ## Key Takeaways
 

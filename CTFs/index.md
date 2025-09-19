@@ -96,7 +96,7 @@ Each CTF follows a structured format designed for developer skill building:
 
 ## Complete All CTF Challenges
 
-📋 __[Open Comprehensive CTF Form - All Challenges](https://forms.office.com/r/t1vtEj7BEQ)__
+📋 __[Open Comprehensive CTF Form - All Challenges](https://forms.office.com/r/TSqpnps4YU)__
 
 The form includes both progressive challenge sections:
 - __Supply Chain Detective__ (SCA & dependency analysis, malicious package detection)

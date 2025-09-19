@@ -95,7 +95,7 @@ Malicious packages are also detectable through Application Security Posture Mana
 
 4. Expand the __Critical__ section to see the most severe vulnerabilities, including malicious packages
 
-    ![SCA Critical Results](./assets/images/malicious_package_critical_results.png "SCA Critical Results")
+    ![SCA Critical Results](./assets/images/vscode/malicious_package_critical_results.png "SCA Critical Results")
 
   </div>
 
@@ -114,7 +114,7 @@ Malicious packages are also detectable through Application Security Posture Mana
 
 4. Expand the __Critical__ section to see the most severe vulnerabilities, including malicious packages
 
-    ![Cursor SCA Critical Results](./assets/images/cursor_malicious_package_critical_results.png "Cursor SCA Critical Results")
+    ![Cursor SCA Critical Results](./assets/images/cursor/cursor_malicious_package_critical_results.png "Cursor SCA Critical Results")
 
   </div>
 
@@ -142,13 +142,13 @@ TypoSquatting attacks exploit common typos in popular package names to trick dev
 
 1. Expand the __Npm-momnet-2.29.1__ result, and select the __Cx43050644-3add__ result. Note how a new pane opens at the far right with a description of the malicious package.
 
-    ![Cx43050644-3add](./assets/images/Cx43050644-3add.png "Cx43050644-3add")
+    ![Cx43050644-3add](./assets/images/vscode/Cx43050644-3add.png "Cx43050644-3add")
 
 2. Per the malicious package description, we can see this is a malicious package using the __Typo Squatting__ attack. The package creators are hoping that a developer mistypes "moment" and accidentally imports their package instead, which includes a malicious method that deletes the inner HTML body and crashes the app.
 
 3. We can fix this malicious package by clicking on the Vulnerable package path which links to package.json and changing the package name from __momnet__ to __moment__:
 
-    ![momnet](./assets/images/momnet.png "momnet")
+    ![momnet](./assets/images/vscode/momnet.png "momnet")
 
   </div>
 
@@ -156,13 +156,13 @@ TypoSquatting attacks exploit common typos in popular package names to trick dev
 
 1. Expand the __Npm-momnet-2.29.1__ result, and select the __Cx43050644-3add__ result. Note how a new pane opens at the far right with a description of the malicious package.
 
-    ![Cursor Cx43050644-3add](./assets/images/cursor_Cx43050644-3add.png "Cursor Cx43050644-3add")
+    ![Cursor Cx43050644-3add](./assets/images/cursor/cursor_Cx43050644-3add.png "Cursor Cx43050644-3add")
 
 2. Per the malicious package description, we can see this is a malicious package using the __Typo Squatting__ attack. The package creators are hoping that a developer mistypes "moment" and accidentally imports their package instead, which includes a malicious method that deletes the inner HTML body and crashes the app.
 
 3. We can fix this malicious package by clicking on the Vulnerable package path which links to package.json and changing the package name from __momnet__ to __moment__:
 
-    ![Cursor momnet](./assets/images/cursor_momnet.png "Cursor momnet")
+    ![Cursor momnet](./assets/images/cursor/cursor_momnet.png "Cursor momnet")
 
   </div>
 
@@ -185,13 +185,13 @@ RepoJacking involves account takeovers to inject malicious code into legitimate 
 
 2. Expand the __Npm-ua-parser-js-0.7.29__ result and select __CVE-2021-4229__
 
-    ![ua-parser](./assets/images/ua-parser.png "ua-parser")
+    ![ua-parser](./assets/images/vscode/ua-parser.png "ua-parser")
 
 3. Reviewing the malicious package description, we can see that ua-parser-js had three versions published with malicious code. The three affected versions (0.7.29, 0.8.0, and 1.0.0) were the result of an account takeover, otherwise known as __Repojacking__. We can see in the remediation advice that we can upgrade to version 0.7.33 to ensure we are not importing an affected version.
 
 4. Click on "Upgrade to Version," and the Checkmarx plugin will automatically update our package version within package.json to 0.7.33
 
-    ![ua-parser-fix](./assets/images/ua-parser-fix.png "ua-parser-fix")
+    ![ua-parser-fix](./assets/images/vscode/ua-parser-fix.png "ua-parser-fix")
 
   </div>
 
@@ -201,13 +201,13 @@ RepoJacking involves account takeovers to inject malicious code into legitimate 
 
 2. Expand the __Npm-ua-parser-js-0.7.29__ result and select __CVE-2021-4229__
 
-    ![Cursor ua-parser](./assets/images/cursor_ua-parser.png "Cursor ua-parser")
+    ![Cursor ua-parser](./assets/images/cursor/cursor_ua-parser.png "Cursor ua-parser")
 
 3. Reviewing the malicious package description, we can see that ua-parser-js had three versions published with malicious code. The three affected versions (0.7.29, 0.8.0, and 1.0.0) were the result of an account takeover, otherwise known as __Repojacking__. We can see in the remediation advice that we can upgrade to version 0.7.33 to ensure we are not importing an affected version.
 
 4. Click on "Upgrade to Version," and the Checkmarx plugin will automatically update our package version within package.json to 0.7.33
 
-    ![Cursor ua-parser-fix](./assets/images/cursor_ua-parser-fix.png "Cursor ua-parser-fix")
+    ![Cursor ua-parser-fix](./assets/images/cursor/cursor_ua-parser-fix.png "Cursor ua-parser-fix")
 
   </div>
 

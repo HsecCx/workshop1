@@ -56,22 +56,18 @@ The Visual Studio Code Extension is available on the [Visual Studio Code marketp
 
 2. **Access Extensions** - Click the Extensions icon in the left sidebar (or press `Ctrl+Shift+X` / `Cmd+Shift+X`)
 
-    ![VS Code Extensions View](./assets/images/vscode_extensions_view.png "VS Code Extensions Panel")
-
 3. **Search for Checkmarx** - In the search bar, type "Checkmarx" and press Enter
-
-    ![Search Checkmarx](./assets/images/vscode_search_checkmarx.png "Search for Checkmarx")
 
 4. **Install the Plugin** - Find "Checkmarx One" in the results and click the **Install** button
 
-    ![Install Checkmarx Plugin](./assets/images/vscode_extensions.png "Checkmarx VS Code Plugin")
+    ![Install Checkmarx Plugin](./assets/images/vscode/vscode_extensions.png "Checkmarx VS Code Plugin")
 
     {: .warning }
     **Important**: Ensure you select the plugin entitled "**Checkmarx One**" not "Checkmarx SAST x.x" (legacy version)
 
 5. **Verify Installation** - After installation, the Checkmarx icon appears in the left-side navigation panel
 
-    ![Checkmarx Plugin Installed](./assets/images/cx_plugin_installed.png "Checkmarx Plugin Installed")
+    ![Checkmarx Plugin Installed](./assets/images/vscode/cx_plugin_installed.png "Checkmarx Plugin Installed")
 
 6. **Plugin Ready** - You should now see the Checkmarx panel in your sidebar, ready for configuration
 
@@ -85,26 +81,30 @@ Since Cursor is built on VS Code, it supports all VS Code extensions including t
 
 1. **Open Cursor** - Launch Cursor from your applications or desktop
 
-2. **Access Extensions** - Click the Extensions icon in the left sidebar (or press `Ctrl+Shift+X` / `Cmd+Shift+X`)
+2. **Access Extensions** - Click the Extensions icon in the left/top sidebar (or press `Ctrl+Shift+X` / `Cmd+Shift+X`)
 
-    ![Cursor Extensions View](./assets/images/cursor_extensions_view.png "Cursor Extensions Panel")
 
 3. **Search for Checkmarx** - In the search bar, type "Checkmarx" and press Enter
 
-    ![Cursor Search Checkmarx](./assets/images/cursor_search_checkmarx.png "Search for Checkmarx in Cursor")
 
 4. **Install the Plugin** - Find "Checkmarx One" in the results and click the **Install** button
+    
+    ![Cursor Extensions View](./assets/images/cursor/cursor_extensions_view.png "Cursor Extensions Panel")
 
-    ![Install Cursor Checkmarx Plugin](./assets/images/cursor_install_checkmarx.png "Checkmarx Cursor Plugin")
 
     {: .warning }
     **Important**: Ensure you select the plugin entitled "**Checkmarx One**" not "Checkmarx SAST x.x" (legacy version)
 
 5. **Verify Installation** - After installation, the Checkmarx icon appears in the left-side navigation panel
 
-    ![Cursor Checkmarx Plugin Installed](./assets/images/cursor_cx_plugin_installed.png "Cursor Checkmarx Plugin Installed")
+    ![Cursor Checkmarx Plugin Installed](./assets/images/cursor/cursor_cx_plugin_installed.png "Cursor Checkmarx Plugin Installed")
 
-6. **Plugin Ready** - You should now see the Checkmarx panel in your sidebar, ready for configuration
+
+    {: .note }
+    **If the extension does not immediately appear in the bar, it may be under the dropdown to the right of the highlighted extension in the above image** 
+
+
+6. **Plugin Ready** - You should now see the Checkmarx panel in your side/top bar, ready for configuration
 
   </div>
 
@@ -124,7 +124,7 @@ Since Cursor is built on VS Code, it supports all VS Code extensions including t
 
 1. In VS Code, click on the Checkmarx extension icon and then click on the Open settings button.  
    The Checkmarx Settings form opens.  
-   ![Configure Checkmarx Plugin](./assets/images/cx_plugin_config.png "Configure Checkmarx Plugin")
+   ![Configure Checkmarx Plugin](./assets/images/vscode/cx_plugin_config.png "Configure Checkmarx Plugin")
 
   </div>
 
@@ -132,7 +132,7 @@ Since Cursor is built on VS Code, it supports all VS Code extensions including t
 
 1. In Cursor, click on the Checkmarx extension icon and then click on the Open settings button.  
    The Checkmarx Settings form opens.  
-   ![Configure Cursor Checkmarx Plugin](./assets/images/cursor_cx_plugin_config.png "Configure Cursor Checkmarx Plugin")
+   ![Configure Cursor Checkmarx Plugin](./assets/images/cursor/cursor_cx_plugin_config.png "Configure Cursor Checkmarx Plugin")
 
   </div>
 
@@ -196,7 +196,7 @@ Since Cursor is built on VS Code, it supports all VS Code extensions including t
      <label for="apikey-tab">API Key Authentication</label>
      
      <div class="auth-content oauth-content">
-       <img src="./assets/images/plugin_oauth_option.png" alt="OAuth Authentication" width="600">
+       <img src="./assets/images/vscode/plugin_oauth_option.png" alt="OAuth Authentication" width="600">
        <p>
          The base URL for this lab will be: <code>https://us.ast.checkmarx.net</code>.<br>
          The Tenant Name will be delivered in the lab.
@@ -204,7 +204,7 @@ Since Cursor is built on VS Code, it supports all VS Code extensions including t
      </div>
 
      <div class="auth-content apikey-content">
-       <img src="./assets/images/plugin_api_auth_option.png" alt="API Key Authentication" width="600">
+       <img src="./assets/images/vscode/plugin_api_auth_option.png" alt="API Key Authentication" width="600">
        <p>
          To use the API Key option, the instructions can be found at 
          <a href="https://docs.checkmarx.com/en/34965-188712-creating-api-keys.html" target="_blank">Generating a Checkmarx API Key</a>.
@@ -229,7 +229,7 @@ Since Cursor is built on VS Code, it supports all VS Code extensions including t
      <input type="radio" id="asca-available-tab" name="asca-config" checked>
      <label for="asca-available-tab">ASCA Available</label>
      
-     <input type="radio" id="asca-unavailable-tab" name="asca-config">
+     <input type="radio" id="asca-unavailable-tab" name="asca-config"> 
      <label for="asca-unavailable-tab">ASCA Not Available</label>
      
      <div class="auth-content asca-available-content">
@@ -297,7 +297,7 @@ Since Cursor is built on VS Code, it supports all VS Code extensions including t
 
 1. Mouse-over the __Project:__ field in the left pane, click the pencil icon, then select the project name __TotallySecure__ that appears in the middle search bar
 
-    ![Select Project](./assets/images/cx_select_project.png "Select the Project")
+    ![Select Project](./assets/images/vscode/cx_select_project.png "Select the Project")
 
     {: .note }
     > Since Checkmarx plugin v2.34.0 release, only the AST/One API Key or OAuth is required to connect the plugin to a Checkmarx One tenant.  If you see a 404 error within VS Code when attempting to connect to a project while using the API Key option, it may be because environment variables are overriding the Uri/tenant names from the API key (cx_base_auth_uri, cx_base_uri, cx_tenant).  These variables are set if you've ever connected to Checkmarx One via the CLI. This can be fixed by deleting the checkmarxcli.yaml file if it exists on your machine.
@@ -308,11 +308,11 @@ Since Cursor is built on VS Code, it supports all VS Code extensions including t
 
 2. Mouse-over the __Branch:__ field in the left pane, click the pencil icon, then select the branch __master__ that appears in the middle search bar
 
-    ![Select Branch](./assets/images/cx_select_branch.png "Select a branch")
+    ![Select Branch](./assets/images/vscode/cx_select_branch.png "Select a branch")
 
 3. The Checkmarx Plugin is now configured and you should see scan results appear in the left pane
 
-    ![Configuration Finished](./assets/images/cx_scan_results.png)
+    ![Configuration Finished](./assets/images/vscode/cx_scan_results.png)
 
   </div>
 
@@ -320,7 +320,7 @@ Since Cursor is built on VS Code, it supports all VS Code extensions including t
 
 1. Mouse-over the __Project:__ field in the left pane, click the pencil icon, then select the project name __TotallySecure__ that appears in the middle search bar
 
-    ![Cursor Select Project](./assets/images/cursor_cx_select_project.png "Select the Project in Cursor")
+    ![Cursor Select Project](./assets/images/cursor/cursor_cx_select_project.png "Select the Project in Cursor")
 
     {: .note }
     > Since Checkmarx plugin v2.34.0 release, only the AST/One API Key or OAuth is required to connect the plugin to a Checkmarx One tenant.  If you see a 404 error within Cursor when attempting to connect to a project while using the API Key option, it may be because environment variables are overriding the Uri/tenant names from the API key (cx_base_auth_uri, cx_base_uri, cx_tenant).  These variables are set if you've ever connected to Checkmarx One via the CLI. This can be fixed by deleting the checkmarxcli.yaml file if it exists on your machine.
@@ -331,11 +331,11 @@ Since Cursor is built on VS Code, it supports all VS Code extensions including t
 
 2. Mouse-over the __Branch:__ field in the left pane, click the pencil icon, then select the branch __master__ that appears in the middle search bar
 
-    ![Cursor Select Branch](./assets/images/cursor_cx_select_branch.png "Select a branch in Cursor")
+    ![Cursor Select Branch](./assets/images/cursor/cursor_cx_select_branch.png "Select a branch in Cursor")
 
 3. The Checkmarx Plugin is now configured and you should see scan results appear in the left pane
 
-    ![Cursor Configuration Finished](./assets/images/cursor_cx_scan_results.png)
+    ![Cursor Configuration Finished](./assets/images/cursor/cursor_cx_scan_results.png)
 
   </div>
 
@@ -358,7 +358,7 @@ Since Cursor is built on VS Code, it supports all VS Code extensions including t
 
 4.  You may be prompted by your IDE asking if you trust the developers. We will not be executing any of this projects code and will just be reviewing the source, so you can safely accept. Once you complete the labs, you can safely delete the project.
 
-    ![VS Code Trust Project](./assets/images/vscode_trust.png "IDE Trust Project")'
+    ![VS Code Trust Project](./assets/images/vscode/vscode_trust.png "IDE Trust Project")
 
 
 ## Key Takeaways

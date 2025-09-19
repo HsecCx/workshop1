@@ -41,35 +41,35 @@ Sure, speed is important, but you can think of speed-focused SAST scans as this 
 
 1. Within the VS Code Checkmarx plugin, expand the latest Scan result.
 
-    ![VS Code Plugin](./assets/images/vscode_cx_plugin.png "VS Code Plugin")
+    ![VS Code Plugin](./assets/images/vscode/vscode_cx_plugin.png "VS Code Plugin")
 
 2. Click the __M__ (Medium), __L__ (Low), and __I__ (Info) icons to filter out everything other than the __H__ (High) and __C__ (Critical) results
 
-    ![SAST Filter](./assets/images/sast_filter.png "SAST Filter")
+    ![SAST Filter](./assets/images/vscode/sast_filter.png "SAST Filter")
 
 3. Expand the __sast > Critical__ menu in the left panel to review the SAST scan results
 4. Select the __SQL Injection (/SQLInjectionController.java:30)__ result from the Critical findings
 
-    ![SAST Critical](./assets/images/sast_critical.png "SAST Critical")
+    ![SAST Critical](./assets/images/vscode/sast_critical.png "SAST Critical")
 
 5. A pane will open with VS Code to the right, which provides a detailed description of the identified vulnerability along with the attack vector.
 
-    ![SQL Injection](./assets/images/sqli.png "SQL Injection")
+    ![SQL Injection](./assets/images/vscode/sqli.png "SQL Injection")
 
 6. Because Checkmarx scans source code and builds a Data Flow Graph, it can identify the source and sink of vulnerabilities, identifying where best to implement a fix to resolve the vulnerability. Click on the first Attack Vector link, __1. "name" ...ggy4sb/vulnerabilities/SQLInjectionController.java [30:88]__, VS Code will open the specific file and highlight the parameter that Checkmarx has identified as the source of the vulnerability
 
-    ![SQL Injection Best Fix Location](./assets/images/sqli_bfl.png "SQL Injection Best Fix Location")
+    ![SQL Injection Best Fix Location](./assets/images/vscode/sqli_bfl.png "SQL Injection Best Fix Location")
 
 7. Reviewing the code, we can see within the result that we're taking direct input of a name and just trimming it and checking if it's blank, otherwise we pass on the input to be later executed as part of a SQL query, which could result in a SQL injection attack. Click on __Description__ in the far right pane to see a description of the risk in greater detail:
 
     {: .note }
     Note that right below the description there is the option to go to __Codebashing__, the Checkmarx One just-in-time training platform that provides interactive lessons on fixing the specific vulnerability you're viewing. 
 
-    ![SQL Injection Learn More](./assets/images/sqli_learnmore.png "SQL Injection Learn More")
+    ![SQL Injection Learn More](./assets/images/vscode/sqli_learnmore.png "SQL Injection Learn More")
 
 8. Click on __Remediation Examples__ to see an example of how to implement a sanitizer within the code to mitigate the SQL Injection vulnerability
 
-    ![SQL Injection Code Sample](./assets/images/sqli_code_sample.png "SQL Injection Code Sample")
+    ![SQL Injection Code Sample](./assets/images/vscode/sqli_code_sample.png "SQL Injection Code Sample")
 
   </div>
 
@@ -77,35 +77,35 @@ Sure, speed is important, but you can think of speed-focused SAST scans as this 
 
 1. Within the Cursor Checkmarx plugin, expand the latest Scan result.
 
-    ![Cursor Plugin](./assets/images/cursor_cx_plugin.png "Cursor Plugin")
+    ![Cursor Plugin](./assets/images/cursor/cursor_cx_plugin.png "Cursor Plugin")
 
 2. Click the __M__ (Medium), __L__ (Low), and __I__ (Info) icons to filter out everything other than the __H__ (High) and __C__ (Critical) results
 
-    ![Cursor SAST Filter](./assets/images/cursor_sast_filter.png "Cursor SAST Filter")
+    ![Cursor SAST Filter](./assets/images/cursor/cursor_sast_filter.png "Cursor SAST Filter")
 
 3. Expand the __sast > Critical__ menu in the left panel to review the SAST scan results
 4. Select the __SQL Injection (/SQLInjectionController.java:30)__ result from the Critical findings
 
-    ![Cursor SAST Critical](./assets/images/cursor_sast_critical.png "Cursor SAST Critical")
+    ![Cursor SAST Critical](./assets/images/cursor/cursor_sast_critical.png "Cursor SAST Critical")
 
 5. A pane will open with Cursor to the right, which provides a detailed description of the identified vulnerability along with the attack vector.
 
-    ![Cursor SQL Injection](./assets/images/cursor_sqli.png "Cursor SQL Injection")
+    ![Cursor SQL Injection](./assets/images/cursor/cursor_sqli.png "Cursor SQL Injection")
 
 6. Because Checkmarx scans source code and builds a Data Flow Graph, it can identify the source and sink of vulnerabilities, identifying where best to implement a fix to resolve the vulnerability. Click on the first Attack Vector link, __1. "name" ...ggy4sb/vulnerabilities/SQLInjectionController.java [30:88]__, Cursor will open the specific file and highlight the parameter that Checkmarx has identified as the source of the vulnerability
 
-    ![Cursor SQL Injection Best Fix Location](./assets/images/cursor_sqli_bfl.png "Cursor SQL Injection Best Fix Location")
+    ![Cursor SQL Injection Best Fix Location](./assets/images/cursor/cursor_sqli_bfl.png "Cursor SQL Injection Best Fix Location")
 
 7. Reviewing the code, we can see within the result that we're taking direct input of a name and just trimming it and checking if it's blank, otherwise we pass on the input to be later executed as part of a SQL query, which could result in a SQL injection attack. Click on __Description__ in the far right pane to see a description of the risk in greater detail:
 
     {: .note }
     Note that right below the description there is the option to go to __Codebashing__, the Checkmarx One just-in-time training platform that provides interactive lessons on fixing the specific vulnerability you're viewing. 
 
-    ![Cursor SQL Injection Learn More](./assets/images/cursor_sqli_learnmore.png "Cursor SQL Injection Learn More")
+    ![Cursor SQL Injection Learn More](./assets/images/cursor/cursor_sqli_learnmore.png "Cursor SQL Injection Learn More")
 
 8. Click on __Remediation Examples__ to see an example of how to implement a sanitizer within the code to mitigate the SQL Injection vulnerability
 
-    ![Cursor SQL Injection Code Sample](./assets/images/cursor_sqli_code_sample.png "Cursor SQL Injection Code Sample")
+    ![Cursor SQL Injection Code Sample](./assets/images/cursor/cursor_sqli_code_sample.png "Cursor SQL Injection Code Sample")
 
   </div>
 
@@ -205,11 +205,11 @@ ASCA runs as a lightweight background process on your local machine, automatical
 
 3. __Look for underlined code__: ASCA will automatically scan the file and show color-coded squiggly lines under problematic code. If you hover on the insecure code, ASCA will show you the reason for the finding. It will also denote at the end of the description that it was an ASCA finding. 
 
-    ![ASCA Finding](./assets/images/asca_insecure_section_handling.png)
+    ![ASCA Finding](./assets/images/vscode/asca_insecure_section_handling.png)
 
 4. __Check the Problems panel__: Navigate to __View__ > __Problems__ to see a detailed list of ASCA findings
 
-    ![ASCA Findings in Problems Panel](./assets/images/asca_problems_terminal.png)
+    ![ASCA Findings in Problems Panel](./assets/images/vscode/asca_problems_terminal.png)
 
 ### AI-Powered Remediation with GitHub Copilot
 
@@ -217,7 +217,7 @@ If you have GitHub Copilot installed, ASCA can generate customized code fixes:
 
 1. __Select the ASCA Result in the Problems Terminal__ and click the __lightbulb__ icon (Show Code Actions). You can select "Fix using Copilot" to generate a code fix or you can select the "Explain using Copilot" to generate a detailed explanation of the vulnerability with an example fix. 
  
-    ![ASCA Copilot Fix](./assets/images/asca_problems_fix.png)
+    ![ASCA Copilot Fix](./assets/images/vscode/asca_problems_fix.png)
 
 
 2. __Select "Fix using Copilot"__ from the context menu (this can be found by hovering over the vulnerability as seen in step 3 of the previous section). Here you can generate explanations and fixes inline without having to move to the problems pane. 
@@ -329,13 +329,13 @@ While Checkmarx One can identify vulnerabilities in source code by validating th
 
         We have a validator in our code to ensure that this variable will only include known inputs.
 
-    ![Triage Result](./assets/images/triage.png "Triage Results")
+    ![Triage Result](./assets/images/vscode/triage.png "Triage Results")
 
 4. Click __Update__
 
 5. The result will now disappear from the SAST High results.  If we want to review the result again, we can select the filter icon, and de-select all options other than __"Proposed Not Exploitable"__
     
-    ![Proposed Not Exploitable](./assets/images/proposed_not_exploitable.png "Proposed Not Exploitable")
+    ![Proposed Not Exploitable](./assets/images/vscode/proposed_not_exploitable.png "Proposed Not Exploitable")
 
   </div>
 
@@ -348,13 +348,13 @@ While Checkmarx One can identify vulnerabilities in source code by validating th
 
         We have a validator in our code to ensure that this variable will only include known inputs.
 
-    ![Cursor Triage Result](./assets/images/cursor_triage.png "Cursor Triage Results")
+    ![Cursor Triage Result](./assets/images/cursor/cursor_triage.png "Cursor Triage Results")
 
 4. Click __Update__
 
 5. The result will now disappear from the SAST High results.  If we want to review the result again, we can select the filter icon, and de-select all options other than __"Proposed Not Exploitable"__
     
-    ![Cursor Proposed Not Exploitable](./assets/images/cursor_proposed_not_exploitable.png "Cursor Proposed Not Exploitable")
+    ![Cursor Proposed Not Exploitable](./assets/images/cursor/cursor_proposed_not_exploitable.png "Cursor Proposed Not Exploitable")
 
   </div>
 
